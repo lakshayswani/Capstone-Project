@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1087422679076",
+    "firebase_url": "https://virtua-stock.firebaseio.com",
+    "project_id": "virtua-stock",
+    "storage_bucket": "virtua-stock.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087422679076:android:f1aaa9a9352d82db",
+        "android_client_info": {
+          "package_name": "com.lakshayswani.virtuastock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087422679076-2usi3satfbmmcd9e41csj0gbmaihkdtl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lakshayswani.virtuastock",
+            "certificate_hash": "18e717d58df6293ef2d1ce40cafe0a95db799cd7"
+          }
+        },
+        {
+          "client_id": "1087422679076-rsame41m3vaf9p2ppd2kljfopqdm0qs4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWCYEj4M7YiTpHB3Hl8568yY7CBho25_0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087422679076-rsame41m3vaf9p2ppd2kljfopqdm0qs4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
