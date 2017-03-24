@@ -24,4 +24,7 @@
         completions."
     </string>
     <string name="web_client_id">1087422679076-2usi3satfbmmcd9e41csj0gbmaihkdtl.apps.googleusercontent.com</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

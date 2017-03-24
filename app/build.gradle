@@ -33,8 +33,14 @@ dependencies {
     compile 'com.google.firebase:firebase-core:10.0.1'
     compile 'com.google.android.gms:play-services-auth:10.0.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta3'
+    compile 'com.android.support:recyclerview-v7:25.3.0'
     testCompile 'junit:junit:4.12'
 }
+
+
+
+
+
 
 
 
