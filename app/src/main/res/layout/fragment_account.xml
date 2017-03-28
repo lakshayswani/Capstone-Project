@@ -24,8 +24,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Username"
-                android:textColor="#333"
-                android:textColorHint="#666"
+                android:textColor="#3F51B5"
+                android:textColorHint="#FF4081"
                 android:textSize="15sp" />
 
         </com.github.florent37.materialtextfield.MaterialTextField>
@@ -43,9 +43,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Old Password"
-                android:textColor="#333"
-                android:textColorHint="#666"
-                android:textSize="15sp" />
+                android:textColor="#3F51B5"
+                android:textColorHint="#FF4081"
+                android:textSize="15sp"
+                android:inputType="textPassword"
+                />
 
         </com.github.florent37.materialtextfield.MaterialTextField>
 
@@ -62,11 +64,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="New Password"
-                android:textColor="#333"
-                android:textColorHint="#666"
+                android:textColor="#3F51B5"
+                android:textColorHint="#FF4081"
                 android:textSize="15sp" />
 
         </com.github.florent37.materialtextfield.MaterialTextField>
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            app:mtf_image="@drawable/ic_vpn_key_black_24dp"
+            app:mtf_openKeyboardOnFocus="true">
+
+            <EditText
+                android:id="@+id/newPasswordConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirm New Password"
+                android:textColor="#3F51B5"
+                android:textColorHint="#FF4081"
+                android:textSize="15sp" />
+
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
 
         <Button
             android:id="@+id/submitUpdates"
@@ -76,5 +103,8 @@
             android:padding="10dp"
             android:text="Update"
             android:textSize="15sp" />
+
+        </android.support.v7.widget.CardView>
+
     </LinearLayout>
 </FrameLayout>
