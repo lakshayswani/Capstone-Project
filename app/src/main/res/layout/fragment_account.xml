@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:padding="10dp"
-            app:mtf_image="@drawable/ic_vpn_key_black_24dp"
+            app:mtf_image="@drawable/ic_account_box_black_24dp"
             app:mtf_openKeyboardOnFocus="true">
 
             <EditText
@@ -35,14 +35,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:padding="10dp"
-            app:mtf_image="@drawable/ic_account_box_black_24dp"
+            app:mtf_image="@drawable/ic_vpn_key_black_24dp"
             app:mtf_openKeyboardOnFocus="true">
 
             <EditText
                 android:id="@+id/oldPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Previous Password"
+                android:hint="Old Password"
                 android:textColor="#333"
                 android:textColorHint="#666"
                 android:textSize="15sp" />
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:padding="10dp"
-            app:mtf_image="@drawable/ic_account_box_black_24dp"
+            app:mtf_image="@drawable/ic_vpn_key_black_24dp"
             app:mtf_openKeyboardOnFocus="true">
 
             <EditText

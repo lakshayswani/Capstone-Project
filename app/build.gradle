@@ -22,6 +22,9 @@ android {
         mavenCentral()
         jcenter()
     }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+    }
 }
 
 dependencies {
