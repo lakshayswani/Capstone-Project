@@ -1,12 +1,9 @@
 package com.lakshayswani.virtuastock.ui;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,11 +27,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.lakshayswani.virtuastock.R;
 
 import static android.Manifest.permission.GET_ACCOUNTS;
 import static android.Manifest.permission.INTERNET;
-import static android.Manifest.permission.READ_CONTACTS;
 
 public class LoginActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener {
@@ -104,11 +101,13 @@ public class LoginActivity extends AppCompatActivity implements
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Toast.makeText(getApplicationContext(), "Signin Successful", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Welcome "+user.getDisplayName(), Toast.LENGTH_LONG).show();
+                    Intent in = new Intent(getApplicationContext(), Dashboard.class);
+                    startActivity(in);
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
-                    Toast.makeText(getApplicationContext(), "Signin not Successful", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getApplicationContext(), "Signin not Successful", Toast.LENGTH_LONG).show();
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
@@ -144,7 +143,7 @@ public class LoginActivity extends AppCompatActivity implements
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(getApplicationContext(), "Seems like you are a new user !",
+                            Toast.makeText(getApplicationContext(), "Some problem occured during signup ! " + task.getResult(),
                                     Toast.LENGTH_SHORT).show();
                             mAuth.createUserWithEmailAndPassword(emailId, password)
                                     .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {

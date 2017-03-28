@@ -14,7 +14,7 @@
     <item
         android:id="@+id/navigation_trade"
         android:icon="@drawable/ic_shopping_basket_black_24dp"
-        android:title="@string/account" />
+        android:title="@string/trade" />
 
     <item
         android:id="@+id/navigation_account"

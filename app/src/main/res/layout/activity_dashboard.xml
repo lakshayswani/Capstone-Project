@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.lakshayswani.virtuastock.ui.dashboard">
+    tools:context="com.lakshayswani.virtuastock.ui.Dashboard">
 
     <FrameLayout
-        android:id="@+id/content"
+        android:id="@+id/dashboardContent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">

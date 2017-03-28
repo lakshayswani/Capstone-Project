@@ -1,13 +1,117 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.lakshayswani.virtuastock.fragments.TradeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/searchStock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:hint="Enter the stock name"
+            android:padding="10dp" />
+
+        <worldline.com.foldablelayout.FoldableLayout
+            android:id="@+id/foldable_stock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"></worldline.com.foldablelayout.FoldableLayout>
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            app:mtf_image="@drawable/ic_account_box_black_24dp"
+            app:mtf_openKeyboardOnFocus="false">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Set Price"
+                android:textSize="10sp"/>
+
+            <com.rey.material.widget.Slider
+                android:id="@+id/stock_trade_price"
+                style="@style/Material.Widget.Slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                app:sl_minValue="0"
+                app:sl_maxValue="100"
+                app:sl_value="50"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Set Quantity"
+                android:textSize="10sp"/>
+
+            <com.rey.material.widget.Slider
+                android:id="@+id/stock_trade_quantity"
+                style="@style/Material.Widget.Slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                app:sl_minValue="0"
+                app:sl_maxValue="100"
+                app:sl_value="50"/>
+
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buy"
+                android:textSize="10sp"/>
+
+            <com.rey.material.widget.Switch
+                android:id="@+id/stock_trade"
+                style="@style/Material.Widget.Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:checked="false"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sell"
+                android:textSize="10sp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/submitTrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="Submit"
+            android:textSize="15sp" />
+
+    </LinearLayout>
 
 </FrameLayout>

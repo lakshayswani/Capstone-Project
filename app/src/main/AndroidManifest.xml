@@ -20,7 +20,7 @@
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
-            android:name=".ui.dashboard"
+            android:name=".ui.Dashboard"
             android:label="@string/title_activity_dashboard" />
         <activity android:name=".ui.LoginActivity"
             android:label="@string/app_name"
