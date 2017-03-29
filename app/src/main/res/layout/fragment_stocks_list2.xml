@@ -10,4 +10,4 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.lakshayswani.virtuastock.fragments.StocksFragment"
-    tools:listitem="@layout/fragment_stocks2" />
+    tools:listitem="@layout/widget_item_layout" />

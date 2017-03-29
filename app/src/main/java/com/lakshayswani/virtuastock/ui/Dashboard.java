@@ -40,7 +40,7 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     fragmentTransaction = fragmentManager.beginTransaction();
-                    StocksFragment stocksFragment = new StocksFragment();
+                    StocksFragment stocksFragment = StocksFragment.newInstance(1);
                     Toast.makeText(Dashboard.this, "Stocks Fragment", Toast.LENGTH_SHORT).show();
 //                    fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                     fragmentTransaction.replace(R.id.dashboardContent, stocksFragment);
@@ -48,7 +48,7 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
                     return true;
                 case R.id.navigation_portfolio:
                     fragmentTransaction = fragmentManager.beginTransaction();
-                    PortfolioFragment portfolioFragment = new PortfolioFragment();
+                    PortfolioFragment portfolioFragment = PortfolioFragment.newInstance(1);
                     Toast.makeText(Dashboard.this, "Portfolio Fragment", Toast.LENGTH_SHORT).show();
 //                    fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                     fragmentTransaction.replace(R.id.dashboardContent, portfolioFragment);
@@ -56,7 +56,7 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
                     return true;
                 case R.id.navigation_trade:
                     fragmentTransaction = fragmentManager.beginTransaction();
-                    TradeFragment tradeFragment = new TradeFragment();
+                    TradeFragment tradeFragment = TradeFragment.newInstance(null, null);
                     Toast.makeText(Dashboard.this, "Trade Fragment", Toast.LENGTH_SHORT).show();
 //                    fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                     fragmentTransaction.replace(R.id.dashboardContent, tradeFragment);
@@ -82,7 +82,7 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
         setContentView(R.layout.activity_dashboard);
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        StocksFragment stocksFragment = new StocksFragment();
+        StocksFragment stocksFragment = StocksFragment.newInstance(1);
         fragmentTransaction.add(R.id.dashboardContent, stocksFragment);
         fragmentTransaction.commit();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
