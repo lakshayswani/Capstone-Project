@@ -41,32 +41,32 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
                 case R.id.navigation_home:
                     fragmentTransaction = fragmentManager.beginTransaction();
                     StocksFragment stocksFragment = StocksFragment.newInstance(1);
-                    Toast.makeText(Dashboard.this, "Stocks Fragment", Toast.LENGTH_SHORT).show();
-//                    fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+//                    Toast.makeText(Dashboard.this, "Stocks Fragment", Toast.LENGTH_SHORT).show();
+                    fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                     fragmentTransaction.replace(R.id.dashboardContent, stocksFragment);
                     fragmentTransaction.commit();
                     return true;
                 case R.id.navigation_portfolio:
                     fragmentTransaction = fragmentManager.beginTransaction();
                     PortfolioFragment portfolioFragment = PortfolioFragment.newInstance(1);
-                    Toast.makeText(Dashboard.this, "Portfolio Fragment", Toast.LENGTH_SHORT).show();
-//                    fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+//                    Toast.makeText(Dashboard.this, "Portfolio Fragment", Toast.LENGTH_SHORT).show();
+                    fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                     fragmentTransaction.replace(R.id.dashboardContent, portfolioFragment);
                     fragmentTransaction.commit();
                     return true;
                 case R.id.navigation_trade:
                     fragmentTransaction = fragmentManager.beginTransaction();
                     TradeFragment tradeFragment = TradeFragment.newInstance(null, null);
-                    Toast.makeText(Dashboard.this, "Trade Fragment", Toast.LENGTH_SHORT).show();
-//                    fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+//                    Toast.makeText(Dashboard.this, "Trade Fragment", Toast.LENGTH_SHORT).show();
+                    fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                     fragmentTransaction.replace(R.id.dashboardContent, tradeFragment);
                     fragmentTransaction.commit();
                     return true;
                 case R.id.navigation_account:
                     fragmentTransaction = fragmentManager.beginTransaction();
                     AccountFragment accountFragment = AccountFragment.newInstance(null,null);
-                    Toast.makeText(Dashboard.this, "Account Fragment", Toast.LENGTH_SHORT).show();
-//                    fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+//                    Toast.makeText(Dashboard.this, "Account Fragment", Toast.LENGTH_SHORT).show();
+                    fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                     fragmentTransaction.replace(R.id.dashboardContent, accountFragment);
                     fragmentTransaction.commit();
                     return true;

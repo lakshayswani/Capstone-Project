@@ -42,6 +42,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/stock_text_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
@@ -64,18 +65,20 @@
                         android:padding="10dp"
                         app:sl_maxValue="100"
                         app:sl_minValue="0"
-                        app:sl_value="50" />
+                        app:sl_value="0" />
 
                     <EditText
                         android:id="@+id/stock_trade_price_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="0"
                         android:layout_weight="8"
                         android:inputType="number" />
 
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/stock_text_quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
@@ -98,13 +101,14 @@
                         android:padding="10dp"
                         app:sl_maxValue="100"
                         app:sl_minValue="0"
-                        app:sl_value="50" />
+                        app:sl_value="0" />
 
                     <EditText
                         android:id="@+id/stock_trade_quantity_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="8"
+                        android:text="0"
                         android:inputType="number" />
 
                 </LinearLayout>
@@ -121,6 +125,7 @@
             android:padding="10dp">
 
             <TextView
+                android:id="@+id/stock_text_buy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Buy"
