@@ -2,24 +2,32 @@ package com.lakshayswani.virtuastock.fragments;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.lakshayswani.virtuastock.R;
+import com.lakshayswani.virtuastock.util.StockPrice;
 import com.lakshayswani.virtuastock.util.Stocks;
 import com.rey.material.widget.Slider;
 import com.rey.material.widget.Switch;
-import com.rey.material.widget.TextView;
 
+import org.json.JSONObject;
 import org.w3c.dom.Text;
+
+import worldline.com.foldablelayout.FoldableLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,6 +51,8 @@ public class TradeFragment extends Fragment {
 
     private String[] stocks = null;
 
+    private StockPrice stockPrice;
+
     private AutoCompleteTextView searchStock;
 
     private Slider stock_trade_price;
@@ -62,6 +72,16 @@ public class TradeFragment extends Fragment {
     private TextView stock_text_quantity;
 
     private TextView stock_text_buy;
+
+    private TextView stock_text_sell;
+
+    private FoldableLayout foldableLayout;
+
+    private TextView stock_name_cover;
+
+    private TextView stock_price_cover;
+
+    private WebView stock_detail;
 
     public TradeFragment() {
         // Required empty public constructor
@@ -103,6 +123,7 @@ public class TradeFragment extends Fragment {
         Stocks s = new Stocks();
 
         stocks = s.getStocks();
+        stockPrice = new StockPrice();
 
         searchStock                 = (AutoCompleteTextView) view.findViewById(R.id.searchStock);
         stock_trade_price           = (Slider) view.findViewById(R.id.stock_trade_price);
@@ -114,8 +135,68 @@ public class TradeFragment extends Fragment {
         stock_text_price            = (TextView) view.findViewById(R.id.stock_text_price);
         stock_text_quantity         = (TextView) view.findViewById(R.id.stock_text_quantity);
         stock_text_buy              = (TextView) view.findViewById(R.id.stock_text_buy);
+        stock_text_sell             = (TextView) view.findViewById(R.id.stock_text_sell);
+
+        foldableLayout              = (FoldableLayout) view.findViewById(R.id.foldable_stock);
+        foldableLayout.setupViews(R.layout.foldable_cover, R.layout.foldable_detail, R.dimen.foldable_card_height, getActivity().getApplicationContext());
+
+        stock_name_cover = (TextView) foldableLayout.getCoverView().findViewById(R.id.stock_name_cover);
+        stock_price_cover = (TextView) foldableLayout.getCoverView().findViewById(R.id.stock_price_cover);
+        stock_detail = (WebView) foldableLayout.getDetailView().findViewById(R.id.stock_detail);
+        stock_detail.setWebViewClient(new WebViewClient());
+
+        setupFoldableLayout();
 
         hideVisibility();
+
+        settingValues();
+
+        stock_trade_quantity.setOnPositionChangeListener(new Slider.OnPositionChangeListener() {
+            @Override
+            public void onPositionChanged(Slider view, boolean fromUser, float oldPos, float newPos, int oldValue, int newValue) {
+                final String newV = ""+newValue;
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        stock_trade_quantity_number.setText(newV);
+                    }
+                });
+            }
+        });
+        stock_trade_price.setOnPositionChangeListener(new Slider.OnPositionChangeListener() {
+            @Override
+            public void onPositionChanged(Slider view, boolean fromUser, float oldPos, float newPos, int oldValue, int newValue) {
+                final String newV = "" + newValue;
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        stock_trade_price_number.setText(newV);
+                    }
+                });
+            }
+        });
+        stock_trade_price_number.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        stock_trade_price.setValue(Float.parseFloat(stock_trade_price_number.getText().toString()), true);
+                    }
+                });
+            }
+        });
+        stock_trade_quantity_number.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                         stock_trade_quantity.setValue(Float.parseFloat(stock_trade_quantity_number.getText().toString()), true);
+                    }
+                });
+            }
+        });
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (getActivity(),android.R.layout.select_dialog_item, stocks);
@@ -123,8 +204,37 @@ public class TradeFragment extends Fragment {
         searchStock.setAdapter(adapter);
         searchStock.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                showVisibility();
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        final JSONObject price = stockPrice.getStockDetailsFromGoogle(searchStock.getText().toString());
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                String name = null;
+                                String bidPrice = null;
+                                try {
+                                    bidPrice = price.getString("l_cur");
+                                    name = price.getString("t");
+                                }catch (Exception e)
+                                {
+                                    Log.e("TradeFragment", e.getMessage());
+                                }
+                                if(name!=null && bidPrice!=null) {
+                                    stock_name_cover.setText(name);
+                                    stock_price_cover.setText(bidPrice);
+                                    int price = Math.round(Float.parseFloat(bidPrice));
+                                    int quantity = 10000/price;
+                                    showVisibility();
+                                    stock_detail.loadUrl("https://in.finance.yahoo.com/q?s=" + stock_name_cover.getText() + "&ql=1");
+                                    stock_trade_price.setValueRange(price-50, price+50, true);
+                                    stock_trade_quantity.setValueRange(0, quantity, true);
+                                }
+                            }
+                        });
+                    }
+                }).start();
             }
         });
         return view;
@@ -135,6 +245,50 @@ public class TradeFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+    }
+
+    private void setupFoldableLayout()
+    {
+        foldableLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (foldableLayout.isFolded()) {
+                    foldableLayout.unfoldWithAnimation();
+                } else {
+                    foldableLayout.foldWithAnimation();
+                }
+            }
+        });
+
+        foldableLayout.setFoldListener(new FoldableLayout.FoldListener() {
+            @Override
+            public void onUnFoldStart() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    foldableLayout.setElevation(5);
+                }
+            }
+
+            @Override
+            public void onUnFoldEnd() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    foldableLayout.setElevation(0);
+                }
+            }
+
+            @Override
+            public void onFoldStart() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    foldableLayout.setElevation(5);
+                }
+            }
+
+            @Override
+            public void onFoldEnd() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    foldableLayout.setElevation(0);
+                }
+            }
+        });
     }
 
     private void hideVisibility()
@@ -148,6 +302,8 @@ public class TradeFragment extends Fragment {
         stock_text_price.setVisibility(View.GONE);
         stock_text_quantity.setVisibility(View.GONE);
         stock_text_buy.setVisibility(View.GONE);
+        stock_text_sell.setVisibility(View.GONE);
+        foldableLayout.setVisibility(View.GONE);
     }
 
     private void showVisibility()
@@ -161,6 +317,8 @@ public class TradeFragment extends Fragment {
         stock_text_price.setVisibility(View.VISIBLE);
         stock_text_quantity.setVisibility(View.VISIBLE);
         stock_text_buy.setVisibility(View.VISIBLE);
+        stock_text_sell.setVisibility(View.VISIBLE);
+        foldableLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -193,5 +351,10 @@ public class TradeFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void settingValues()
+    {
+
     }
 }

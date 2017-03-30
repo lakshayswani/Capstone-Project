@@ -1,12 +1,10 @@
 package com.lakshayswani.virtuastock.util;
 
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import android.util.Log;
+import org.json.JSONObject;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 
 /**
  * Created by lakshay.swani on 3/29/2017.
@@ -14,38 +12,36 @@ import java.net.URLEncoder;
 
 public class StockPrice {
 
-    private OkHttpClient client = new OkHttpClient();
+    public JSONObject getStockDetailsFromGoogle(String s) {
+        String response = null;
+        JSONObject JSON = null;
+        String url = "http://finance.google.com/finance/info?client=ig&q=" + s;
+        try {
+            response = getResponse(url);
+            response = response.substring(9, response.length()-2);
+            JSON = new JSONObject(response);
+        }catch (Exception e)
+        {
+            Log.e("Stock Details","Invalid Stock Name");
+        }
+            return JSON;
+    }
 
-    public String getStockDetails(String stockName)
-    {
-        StringBuilder urlStringBuilder = new StringBuilder();
-        String getResponse = null;
-        String urlString = null;
-        try{
-            // Base URL for the Yahoo query
-            urlStringBuilder.append("https://query.yahooapis.com/v1/public/yql?q=");
-            urlStringBuilder.append(URLEncoder.encode("select * from yahoo.finance.quotes where symbol "
-                    + "in (", "UTF-8"));
-            urlStringBuilder.append(URLEncoder.encode("\""+stockName+"\")", "UTF-8"));
-            urlStringBuilder.append("&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables."
-                    + "org%2Falltableswithkeys&callback=");
-
-            urlString = urlStringBuilder.toString();
-
-            getResponse = fetchData(urlString);
+    public String getResponse(String url) {
+        String result = null;
+        int c;
+        try {
+            URL hp = new URL(url);
+            URLConnection hpCon = hp.openConnection();
+            InputStream input = hpCon.getInputStream();
+            while (((c = input.read()) != -1)) {
+                result = result + (char) c;
+            }
+            input.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return getResponse;
-    }
-
-    public String fetchData(String url) throws IOException {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        Response response = client.newCall(request).execute();
-        return response.body().string();
+        return result;
     }
 
 }
