@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -37,38 +38,40 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            fragmentTransaction = fragmentManager.beginTransaction();
+            Fragment currentFragment = fragmentManager.findFragmentById(R.id.dashboardContent);
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    fragmentTransaction = fragmentManager.beginTransaction();
-                    StocksFragment stocksFragment = StocksFragment.newInstance(1);
-//                    Toast.makeText(Dashboard.this, "Stocks Fragment", Toast.LENGTH_SHORT).show();
-                    fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-                    fragmentTransaction.replace(R.id.dashboardContent, stocksFragment);
-                    fragmentTransaction.commit();
+                    if (!(currentFragment instanceof StocksFragment)) {
+                        StocksFragment stocksFragment = StocksFragment.newInstance(1);
+                        addAnimation(fragmentTransaction, currentFragment, stocksFragment);
+                        fragmentTransaction.replace(R.id.dashboardContent, stocksFragment);
+                        fragmentTransaction.commit();
+                    }
                     return true;
                 case R.id.navigation_portfolio:
-                    fragmentTransaction = fragmentManager.beginTransaction();
-                    PortfolioFragment portfolioFragment = PortfolioFragment.newInstance(1);
-//                    Toast.makeText(Dashboard.this, "Portfolio Fragment", Toast.LENGTH_SHORT).show();
-                    fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-                    fragmentTransaction.replace(R.id.dashboardContent, portfolioFragment);
-                    fragmentTransaction.commit();
+                    if (!(currentFragment instanceof PortfolioFragment)) {
+                        PortfolioFragment portfolioFragment = PortfolioFragment.newInstance(1);
+                        addAnimation(fragmentTransaction, currentFragment, portfolioFragment);
+                        fragmentTransaction.replace(R.id.dashboardContent, portfolioFragment);
+                        fragmentTransaction.commit();
+                    }
                     return true;
                 case R.id.navigation_trade:
-                    fragmentTransaction = fragmentManager.beginTransaction();
-                    TradeFragment tradeFragment = TradeFragment.newInstance(null, null);
-//                    Toast.makeText(Dashboard.this, "Trade Fragment", Toast.LENGTH_SHORT).show();
-                    fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-                    fragmentTransaction.replace(R.id.dashboardContent, tradeFragment);
-                    fragmentTransaction.commit();
+                    if (!(currentFragment instanceof TradeFragment)) {
+                        TradeFragment tradeFragment = TradeFragment.newInstance(null, null);
+                        addAnimation(fragmentTransaction, currentFragment, tradeFragment);
+                        fragmentTransaction.replace(R.id.dashboardContent, tradeFragment);
+                        fragmentTransaction.commit();
+                    }
                     return true;
                 case R.id.navigation_account:
-                    fragmentTransaction = fragmentManager.beginTransaction();
-                    AccountFragment accountFragment = AccountFragment.newInstance(null,null);
-//                    Toast.makeText(Dashboard.this, "Account Fragment", Toast.LENGTH_SHORT).show();
-                    fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-                    fragmentTransaction.replace(R.id.dashboardContent, accountFragment);
-                    fragmentTransaction.commit();
+                    if (!(currentFragment instanceof AccountFragment)) {
+                        AccountFragment accountFragment = AccountFragment.newInstance(null, null);
+                        addAnimation(fragmentTransaction, currentFragment, accountFragment);
+                        fragmentTransaction.replace(R.id.dashboardContent, accountFragment);
+                        fragmentTransaction.commit();
+                    }
                     return true;
             }
             return false;
@@ -87,6 +90,41 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
         fragmentTransaction.commit();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    private void addAnimation(FragmentTransaction fragmentTransaction, Fragment f1, Fragment f2) {
+        int start = 0;
+        int end = 0;
+        if (f1 instanceof StocksFragment) {
+            start = 1;
+        } else if (f1 instanceof PortfolioFragment) {
+            start = 2;
+        } else if (f1 instanceof TradeFragment) {
+            start = 3;
+        } else if (f1 instanceof AccountFragment) {
+            start = 4;
+        }
+        if (f2 instanceof StocksFragment) {
+            end = 1;
+        } else if (f2 instanceof PortfolioFragment) {
+            end = 2;
+        } else if (f2 instanceof TradeFragment) {
+            end = 3;
+        } else if (f2 instanceof AccountFragment) {
+            end = 4;
+        }
+        if(start<end)
+        {
+            fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
+        }
+        else if(start>end)
+        {
+            fragmentTransaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right);
+        }
+        else
+        {
+            fragmentTransaction.setCustomAnimations(android.R.anim.bounce_interpolator, android.R.anim.bounce_interpolator);
+        }
     }
 
 }
