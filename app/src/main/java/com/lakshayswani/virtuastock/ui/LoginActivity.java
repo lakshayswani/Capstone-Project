@@ -115,19 +115,6 @@ public class LoginActivity extends AppCompatActivity implements
             }
         };
 
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        if (user != null) {
-//            // Name, email address, and profile photo Url
-//            String name = user.getDisplayName();
-//            String email = user.getEmail();
-//            Uri photoUrl = user.getPhotoUrl();
-//
-//            // The user's ID, unique to the Firebase project. Do NOT use this value to
-//            // authenticate with your backend server, if you have one. Use
-//            // FirebaseUser.getToken() instead.
-//            String uid = user.getUid();
-//        }
-
     }
 
     private void signInFirebase(final String emailId, final String password)
@@ -143,8 +130,8 @@ public class LoginActivity extends AppCompatActivity implements
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(getApplicationContext(), "Some problem occured during signup ! " + task.getResult(),
-                                    Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getApplicationContext(), "Some problem occured during signup ! " + task.getResult(),
+//                                    Toast.LENGTH_SHORT).show();
                             mAuth.createUserWithEmailAndPassword(emailId, password)
                                     .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                         @Override
@@ -155,8 +142,8 @@ public class LoginActivity extends AppCompatActivity implements
                                             // the auth state listener will be notified and logic to handle the
                                             // signed in user can be handled in the listener.
                                             if (!task.isSuccessful()) {
-                                                Toast.makeText(getApplicationContext(), "Unable to make user with these details.",
-                                                        Toast.LENGTH_SHORT).show();
+//                                                Toast.makeText(getApplicationContext(), "Unable to make user with these details.",
+//                                                        Toast.LENGTH_SHORT).show();
                                             }
 
                                         }
@@ -181,6 +168,7 @@ public class LoginActivity extends AppCompatActivity implements
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
+        finish();
     }
 
     private void signIn() {

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,8 +18,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lakshayswani.virtuastock.R;
+import com.lakshayswani.virtuastock.ui.Dashboard;
 import com.lakshayswani.virtuastock.util.StockPrice;
 import com.lakshayswani.virtuastock.util.Stocks;
 import com.rey.material.widget.Slider;
@@ -26,6 +29,10 @@ import com.rey.material.widget.Switch;
 
 import org.json.JSONObject;
 import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 import worldline.com.foldablelayout.FoldableLayout;
 
@@ -38,6 +45,9 @@ import worldline.com.foldablelayout.FoldableLayout;
  * create an instance of this fragment.
  */
 public class TradeFragment extends Fragment {
+
+    static TradeFragment fragment;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -97,11 +107,13 @@ public class TradeFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static TradeFragment newInstance(String param1, String param2) {
-        TradeFragment fragment = new TradeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+        if (fragment == null) {
+            fragment = new TradeFragment();
+            Bundle args = new Bundle();
+            args.putString(ARG_PARAM1, param1);
+            args.putString(ARG_PARAM2, param2);
+            fragment.setArguments(args);
+        }
         return fragment;
     }
 
@@ -125,19 +137,28 @@ public class TradeFragment extends Fragment {
         stocks = s.getStocks();
         stockPrice = new StockPrice();
 
-        searchStock                 = (AutoCompleteTextView) view.findViewById(R.id.searchStock);
-        stock_trade_price           = (Slider) view.findViewById(R.id.stock_trade_price);
-        stock_trade_quantity        = (Slider) view.findViewById(R.id.stock_trade_quantity);
-        stock_trade_price_number    = (EditText) view.findViewById(R.id.stock_trade_price_number);
+        searchStock = (AutoCompleteTextView) view.findViewById(R.id.searchStock);
+        stock_trade_price = (Slider) view.findViewById(R.id.stock_trade_price);
+        stock_trade_quantity = (Slider) view.findViewById(R.id.stock_trade_quantity);
+        stock_trade_price_number = (EditText) view.findViewById(R.id.stock_trade_price_number);
         stock_trade_quantity_number = (EditText) view.findViewById(R.id.stock_trade_quantity_number);
-        stock_trade                 = (Switch) view.findViewById(R.id.stock_trade);
-        submitTrade                 = (Button) view.findViewById(R.id.submitTrade);
-        stock_text_price            = (TextView) view.findViewById(R.id.stock_text_price);
-        stock_text_quantity         = (TextView) view.findViewById(R.id.stock_text_quantity);
-        stock_text_buy              = (TextView) view.findViewById(R.id.stock_text_buy);
-        stock_text_sell             = (TextView) view.findViewById(R.id.stock_text_sell);
+        stock_trade = (Switch) view.findViewById(R.id.stock_trade);
+        submitTrade = (Button) view.findViewById(R.id.submitTrade);
+        stock_text_price = (TextView) view.findViewById(R.id.stock_text_price);
+        stock_text_quantity = (TextView) view.findViewById(R.id.stock_text_quantity);
+        stock_text_buy = (TextView) view.findViewById(R.id.stock_text_buy);
+        stock_text_sell = (TextView) view.findViewById(R.id.stock_text_sell);
 
-        foldableLayout              = (FoldableLayout) view.findViewById(R.id.foldable_stock);
+        searchStock.setTypeface(Dashboard.robotoLight);
+        stock_trade_price_number.setTypeface(Dashboard.robotoLight);
+        stock_trade_quantity_number.setTypeface(Dashboard.robotoLight);
+        submitTrade.setTypeface(Dashboard.robotoLight);
+        stock_text_price.setTypeface(Dashboard.robotoLight);
+        stock_text_quantity.setTypeface(Dashboard.robotoLight);
+        stock_text_buy.setTypeface(Dashboard.robotoLight);
+        stock_text_sell.setTypeface(Dashboard.robotoLight);
+
+        foldableLayout = (FoldableLayout) view.findViewById(R.id.foldable_stock);
         foldableLayout.setupViews(R.layout.foldable_cover, R.layout.foldable_detail, R.dimen.foldable_card_height, getActivity().getApplicationContext());
 
         stock_name_cover = (TextView) foldableLayout.getCoverView().findViewById(R.id.stock_name_cover);
@@ -145,16 +166,57 @@ public class TradeFragment extends Fragment {
         stock_detail = (WebView) foldableLayout.getDetailView().findViewById(R.id.stock_detail);
         stock_detail.setWebViewClient(new WebViewClient());
 
+        stock_name_cover.setTypeface(Dashboard.robotoLight);
+        stock_price_cover.setTypeface(Dashboard.robotoLight);
+
         setupFoldableLayout();
 
-        hideVisibility();
+        if (savedInstanceState != null) {
+            if (!savedInstanceState.getString("stockName").equalsIgnoreCase("")) {
+                stock_name_cover.setText(savedInstanceState.getString("stockName"));
+                stock_price_cover.setText(savedInstanceState.getString("stockPrice"));
+                stock_detail.loadUrl("https://in.finance.yahoo.com/q?s=" + savedInstanceState.getString("stockName") + "&ql=1");
+                stock_trade_price.setValueRange(savedInstanceState.getInt("bidPrice"), savedInstanceState.getInt("bidPrice") + 100, true);
+                stock_trade_quantity.setValueRange(0, savedInstanceState.getInt("bidQuantity"), true);
+            }
+            else
+            {
+                hideVisibility();
+            }
+        } else {
+            hideVisibility();
+        }
 
-        settingValues();
+        submitTrade.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                com.lakshayswani.virtuastock.model.Stocks stock = new com.lakshayswani.virtuastock.model.Stocks();
+                stock.setStockName(stock_name_cover.getText().toString());
+                stock.setBidPrice("" + stock_trade_price.getValue());
+                stock.setQuantity("" + stock_trade_quantity.getValue());
+                stock.setType(stock_trade.isChecked() ? "sell" : "buy");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                String currentDateandTime = sdf.format(new Date());
+                stock.setDate(currentDateandTime);
+
+                if (Integer.parseInt(stock.getQuantity()) > 0) {
+                    if (stock.getType().equalsIgnoreCase("sell")) {
+                        if (Dashboard.user.checkSell(stock.getStockName(), Integer.parseInt(stock.getQuantity()))) {
+                            proceedTransaction(stock);
+                        } else {
+                            Toast.makeText(getActivity(), "OOPS! You don't seem to have these many stocks to sell.", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        proceedTransaction(stock);
+                    }
+                }
+            }
+        });
 
         stock_trade_quantity.setOnPositionChangeListener(new Slider.OnPositionChangeListener() {
             @Override
             public void onPositionChanged(Slider view, boolean fromUser, float oldPos, float newPos, int oldValue, int newValue) {
-                final String newV = ""+newValue;
+                final String newV = "" + newValue;
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -192,14 +254,14 @@ public class TradeFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                         stock_trade_quantity.setValue(Float.parseFloat(stock_trade_quantity_number.getText().toString()), true);
+                        stock_trade_quantity.setValue(Float.parseFloat(stock_trade_quantity_number.getText().toString()), true);
                     }
                 });
             }
         });
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (getActivity(),android.R.layout.select_dialog_item, stocks);
+                (getActivity(), android.R.layout.select_dialog_item, stocks);
         searchStock.setThreshold(2);
         searchStock.setAdapter(adapter);
         searchStock.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -217,18 +279,17 @@ public class TradeFragment extends Fragment {
                                 try {
                                     bidPrice = price.getString("l_cur");
                                     name = price.getString("t");
-                                }catch (Exception e)
-                                {
+                                } catch (Exception e) {
                                     Log.e("TradeFragment", e.getMessage());
                                 }
-                                if(name!=null && bidPrice!=null) {
+                                if (name != null && bidPrice != null) {
                                     stock_name_cover.setText(name);
                                     stock_price_cover.setText(bidPrice);
                                     int price = Math.round(Float.parseFloat(bidPrice));
-                                    int quantity = 10000/price;
+                                    int quantity = 10000 / price;
                                     showVisibility();
                                     stock_detail.loadUrl("https://in.finance.yahoo.com/q?s=" + stock_name_cover.getText() + "&ql=1");
-                                    stock_trade_price.setValueRange(price-50, price+50, true);
+                                    stock_trade_price.setValueRange(price - 50, price + 50, true);
                                     stock_trade_quantity.setValueRange(0, quantity, true);
                                 }
                             }
@@ -247,8 +308,7 @@ public class TradeFragment extends Fragment {
         }
     }
 
-    private void setupFoldableLayout()
-    {
+    private void setupFoldableLayout() {
         foldableLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -291,8 +351,7 @@ public class TradeFragment extends Fragment {
         });
     }
 
-    private void hideVisibility()
-    {
+    private void hideVisibility() {
         stock_trade_price.setVisibility(View.GONE);
         stock_trade_quantity.setVisibility(View.GONE);
         stock_trade_price_number.setVisibility(View.GONE);
@@ -306,8 +365,7 @@ public class TradeFragment extends Fragment {
         foldableLayout.setVisibility(View.GONE);
     }
 
-    private void showVisibility()
-    {
+    private void showVisibility() {
         stock_trade_price.setVisibility(View.VISIBLE);
         stock_trade_quantity.setVisibility(View.VISIBLE);
         stock_trade_price_number.setVisibility(View.VISIBLE);
@@ -353,8 +411,34 @@ public class TradeFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    private void settingValues()
-    {
+    private void proceedTransaction(com.lakshayswani.virtuastock.model.Stocks stock) {
+        if (Dashboard.user.getStocks() == null) {
+            ArrayList<com.lakshayswani.virtuastock.model.Stocks> stocks = new ArrayList<>();
+            stocks.add(stock);
+            Dashboard.user.setStocks(stocks);
+        } else {
+            Dashboard.user.getStocks().add(stock);
+        }
+        Dashboard.user.balanceUpdate(stock.getType(), Integer.parseInt(stock.getBidPrice()), Integer.parseInt(stock.getQuantity()));
+        Dashboard.updateUser();
+        hideVisibility();
+    }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        try {
+            outState.putString("stockName", stock_name_cover.getText().toString());
+            outState.putString("stockPrice", stock_price_cover.getText().toString());
+            outState.putInt("bidPrice", stock_trade_price.getMinValue());
+            outState.putInt("bidQuantity", stock_trade_quantity.getMaxValue());
+        } catch (Exception e) {
+            Log.d("Null Stock", e.getMessage());
+        }
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
     }
 }

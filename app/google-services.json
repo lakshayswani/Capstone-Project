@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1087422679076-o536tibgulngvp91njq356qu6kplot35.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lakshayswani.virtuastock",
+            "certificate_hash": "67882e8a968d948e74adf10eefe277b615f68f02"
+          }
+        },
+        {
           "client_id": "1087422679076-2usi3satfbmmcd9e41csj0gbmaihkdtl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

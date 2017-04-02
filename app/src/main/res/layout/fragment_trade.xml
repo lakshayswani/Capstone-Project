@@ -1,7 +1,9 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.lakshayswani.virtuastock.fragments.TradeFragment">
@@ -17,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:singleLine="true"
             android:ems="10"
             android:hint="Enter the stock name"
             android:padding="10dp" />
@@ -159,3 +162,4 @@
     </LinearLayout>
 
 </FrameLayout>
+</ScrollView>

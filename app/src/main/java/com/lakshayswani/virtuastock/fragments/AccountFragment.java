@@ -1,15 +1,31 @@
 package com.lakshayswani.virtuastock.fragments;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.lakshayswani.virtuastock.R;
+import com.lakshayswani.virtuastock.ui.Dashboard;
+import com.lakshayswani.virtuastock.ui.LoginActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +36,9 @@ import com.lakshayswani.virtuastock.R;
  * create an instance of this fragment.
  */
 public class AccountFragment extends Fragment {
+
+    static AccountFragment fragment;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -28,6 +47,12 @@ public class AccountFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private EditText username;
+    private EditText newPassword;
+    private EditText newPasswordConfirm;
+    private Button submitUpdates;
+    private FloatingActionButton logOut;
 
     private OnFragmentInteractionListener mListener;
 
@@ -45,11 +70,13 @@ public class AccountFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static AccountFragment newInstance(String param1, String param2) {
-        AccountFragment fragment = new AccountFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+        if (fragment == null) {
+            fragment = new AccountFragment();
+            Bundle args = new Bundle();
+            args.putString(ARG_PARAM1, param1);
+            args.putString(ARG_PARAM2, param2);
+            fragment.setArguments(args);
+        }
         return fragment;
     }
 
@@ -68,9 +95,58 @@ public class AccountFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_account, container, false);
+        username = (EditText) view.findViewById(R.id.username);
+        newPassword = (EditText) view.findViewById(R.id.newPassword);
+        newPasswordConfirm = (EditText) view.findViewById(R.id.newPasswordConfirm);
+        submitUpdates = (Button) view.findViewById(R.id.submitUpdates);
+        logOut = (FloatingActionButton) view.findViewById(R.id.logOut);
 
+        username.setTypeface(Dashboard.robotoLight);
+        newPassword.setTypeface(Dashboard.robotoLight);
+        newPasswordConfirm.setTypeface(Dashboard.robotoLight);
+        submitUpdates.setTypeface(Dashboard.robotoLight);
 
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                alertDialogBuilder.setMessage("Are you sure you want to log out?");
+                alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseAuth.getInstance().signOut();
+                        Intent in = new Intent(getActivity(), LoginActivity.class);
+                        startActivity(in);
+                        getActivity().finish();
+                    }
+                });
+                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                alertDialogBuilder.setTitle("LOGOUT");
+                alertDialogBuilder.show();
+            }
+        });
 
+        submitUpdates.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (newPassword.getText().toString().equalsIgnoreCase(newPasswordConfirm.getText().toString())) {
+                    Dashboard.currentUser.updatePassword(newPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Toast.makeText(getActivity(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else if ((newPassword.getText().toString().equalsIgnoreCase("")) && (newPasswordConfirm.getText().toString().equalsIgnoreCase(""))) {
+                    Toast.makeText(getActivity(), "Please enter the passwords to update", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "The passwords do not match", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         return view;
     }
@@ -112,5 +188,15 @@ public class AccountFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
     }
 }

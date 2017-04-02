@@ -1,9 +1,18 @@
 package com.lakshayswani.virtuastock.ui;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.lakshayswani.virtuastock.fragments.*;
 
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -16,8 +25,19 @@ import android.widget.Toast;
 
 import com.lakshayswani.virtuastock.R;
 import com.lakshayswani.virtuastock.fragments.dummy.DummyContent;
+import com.lakshayswani.virtuastock.model.Stocks;
+import com.lakshayswani.virtuastock.model.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Dashboard extends AppCompatActivity implements PortfolioFragment.OnListFragmentInteractionListener, StocksFragment.OnListFragmentInteractionListener, AccountFragment.OnFragmentInteractionListener, TradeFragment.OnFragmentInteractionListener {
+
+    public static DatabaseReference database;
+
+    public static FirebaseUser currentUser;
+
+    public static User user;
 
     @Override
     public void onListFragmentInteraction(DummyContent.DummyItem item) {
@@ -30,6 +50,8 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
     }
 
     private FragmentManager fragmentManager;
+
+    public static Typeface robotoLight;
 
     private FragmentTransaction fragmentTransaction;
 
@@ -83,11 +105,50 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        database = FirebaseDatabase.getInstance().getReference();
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        final String uid = currentUser.getUid();
+        final String emailId = currentUser.getEmail();
+
+        database.child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                user = dataSnapshot.getValue(User.class);
+                if (user == null) {
+                    user = new User();
+                    user.setUid(uid);
+                    user.setEmailId(emailId);
+                    user.setBalance("10000");
+                    database.child(uid).setValue(user);
+                } else {
+                    ArrayList<Stocks> stocks = new ArrayList<Stocks>();
+                    for (DataSnapshot data : dataSnapshot.child("stocks").getChildren()) {
+                        stocks.add(data.getValue(Stocks.class));
+                        Toast.makeText(Dashboard.this, "Stocks addinggggg", Toast.LENGTH_SHORT).show();
+                    }
+                    user.setStocks(stocks);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        robotoLight = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/Roboto-Light.ttf");
+
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
-        StocksFragment stocksFragment = StocksFragment.newInstance(1);
-        fragmentTransaction.add(R.id.dashboardContent, stocksFragment);
-        fragmentTransaction.commit();
+
+        if (savedInstanceState != null) {
+            fragmentManager.getFragment(savedInstanceState, "currentFragment");
+        } else {
+            StocksFragment stocksFragment = StocksFragment.newInstance(1);
+            fragmentTransaction.add(R.id.dashboardContent, stocksFragment);
+            fragmentTransaction.commit();
+        }
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
@@ -113,18 +174,24 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
         } else if (f2 instanceof AccountFragment) {
             end = 4;
         }
-        if(start<end)
-        {
+        if (start < end) {
             fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
-        }
-        else if(start>end)
-        {
+        } else if (start > end) {
             fragmentTransaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right);
-        }
-        else
-        {
+        } else {
             fragmentTransaction.setCustomAnimations(android.R.anim.bounce_interpolator, android.R.anim.bounce_interpolator);
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        FragmentManager manager = getSupportFragmentManager();
+        manager.putFragment(outState, "currentFragment", manager.findFragmentById(R.id.dashboardContent));
+    }
+
+    public static void updateUser() {
+        database.child(currentUser.getUid()).setValue(user);
     }
 
 }

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -41,6 +42,8 @@ import com.lakshayswani.virtuastock.ui.Dashboard;
  */
 public class StocksFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    static StocksFragment fragment;
+
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
@@ -67,10 +70,12 @@ public class StocksFragment extends Fragment implements LoaderManager.LoaderCall
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static StocksFragment newInstance(int columnCount) {
-        StocksFragment fragment = new StocksFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
+        if(fragment==null) {
+            fragment = new StocksFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_COLUMN_COUNT, columnCount);
+            fragment.setArguments(args);
+        }
         return fragment;
     }
 
@@ -204,5 +209,15 @@ public class StocksFragment extends Fragment implements LoaderManager.LoaderCall
     @Override
     public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
         mCursorAdapter.swapCursor(null);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
     }
 }

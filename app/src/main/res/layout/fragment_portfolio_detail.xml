@@ -4,10 +4,11 @@
     android:layout_height="200dp">
 
     <LinearLayout
-        android:background="@android:color/holo_green_dark"
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:padding="1dp"
         android:weightSum="3">
 
         <LinearLayout
@@ -94,7 +95,7 @@
                 android:padding="1dp"
                 android:layout_weight="0.5">
                 <TextView
-                    android:id="@+id/portfolio_detail_stock_price"
+                    android:id="@+id/portfolio_detail_stock_quantity"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"

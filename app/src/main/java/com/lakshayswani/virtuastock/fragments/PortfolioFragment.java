@@ -2,6 +2,7 @@ package com.lakshayswani.virtuastock.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,11 @@ import com.lakshayswani.virtuastock.R;
 import com.lakshayswani.virtuastock.adapters.MyportfolioRecyclerViewAdapter;
 import com.lakshayswani.virtuastock.fragments.dummy.DummyContent;
 import com.lakshayswani.virtuastock.fragments.dummy.DummyContent.DummyItem;
+import com.lakshayswani.virtuastock.model.Stocks;
+import com.lakshayswani.virtuastock.ui.Dashboard;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A fragment representing a list of Items.
@@ -22,6 +28,8 @@ import com.lakshayswani.virtuastock.fragments.dummy.DummyContent.DummyItem;
  * interface.
  */
 public class PortfolioFragment extends Fragment {
+
+    static PortfolioFragment fragment;
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -39,10 +47,12 @@ public class PortfolioFragment extends Fragment {
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static PortfolioFragment newInstance(int columnCount) {
-        PortfolioFragment fragment = new PortfolioFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
+        if(fragment==null) {
+            fragment = new PortfolioFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_COLUMN_COUNT, columnCount);
+            fragment.setArguments(args);
+        }
         return fragment;
     }
 
@@ -59,7 +69,13 @@ public class PortfolioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_portfolio_list, container, false);
-
+        List<Stocks> stocksList;
+        try {
+           stocksList = Dashboard.user.getStocks();
+        }catch (Exception e)
+        {
+            stocksList = new ArrayList<>();
+        }
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
@@ -69,7 +85,7 @@ public class PortfolioFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyportfolioRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyportfolioRecyclerViewAdapter(stocksList, mListener));
         }
         return view;
     }
@@ -105,5 +121,15 @@ public class PortfolioFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(DummyItem item);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
     }
 }

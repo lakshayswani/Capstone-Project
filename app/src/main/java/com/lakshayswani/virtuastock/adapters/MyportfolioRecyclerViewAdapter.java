@@ -1,5 +1,6 @@
 package com.lakshayswani.virtuastock.adapters;
 
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +10,12 @@ import android.widget.TextView;
 import com.lakshayswani.virtuastock.R;
 import com.lakshayswani.virtuastock.fragments.PortfolioFragment.OnListFragmentInteractionListener;
 import com.lakshayswani.virtuastock.fragments.dummy.DummyContent.DummyItem;
+import com.lakshayswani.virtuastock.model.Stocks;
+import com.lakshayswani.virtuastock.ui.Dashboard;
 
 import java.util.List;
+
+import worldline.com.foldablelayout.FoldableLayout;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
@@ -19,37 +24,73 @@ import java.util.List;
  */
 public class MyportfolioRecyclerViewAdapter extends RecyclerView.Adapter<MyportfolioRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Stocks> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyportfolioRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyportfolioRecyclerViewAdapter(List<Stocks> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_portfolio, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(new FoldableLayout(parent.getContext()));
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
+        holder.cStockName.setText(holder.mItem.getStockName());
+        holder.cStockPrice.setText(holder.mItem.getBidPrice());
+        holder.dStockName.setText(holder.mItem.getStockName());
+        holder.dStockQuantity.setText(holder.mItem.getQuantity());
+        holder.dTradePrice.setText(holder.mItem.getBidPrice());
+        holder.dTradeProfit.setText(holder.mItem.getBidPrice());
+        holder.dDate.setText(holder.mItem.getDate());
+        holder.dTradeType.setText(holder.mItem.getType());
+
+        holder.mFoldableLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
+                if (holder.mFoldableLayout.isFolded()) {
+                    holder.mFoldableLayout.unfoldWithAnimation();
+                } else {
+                    holder.mFoldableLayout.foldWithAnimation();
                 }
             }
         });
+
+        holder.mFoldableLayout.setFoldListener(new FoldableLayout.FoldListener() {
+            @Override
+            public void onUnFoldStart() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    holder.mFoldableLayout.setElevation(5);
+                }
+            }
+
+            @Override
+            public void onUnFoldEnd() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    holder.mFoldableLayout.setElevation(0);
+                }
+            }
+
+            @Override
+            public void onFoldStart() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    holder.mFoldableLayout.setElevation(5);
+                }
+            }
+
+            @Override
+            public void onFoldEnd() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    holder.mFoldableLayout.setElevation(0);
+                }
+            }
+        });
+
     }
 
     @Override
@@ -58,21 +99,39 @@ public class MyportfolioRecyclerViewAdapter extends RecyclerView.Adapter<Myportf
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
+        protected FoldableLayout mFoldableLayout;
 
-        public ViewHolder(View view) {
-            super(view);
-            mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+        public final TextView cStockName;
+        public final TextView cStockPrice;
+        public final TextView dStockName;
+        public final TextView dStockQuantity;
+        public final TextView dTradePrice;
+        public final TextView dTradeProfit;
+        public final TextView dDate;
+        public final TextView dTradeType;
+        public Stocks mItem;
+
+        public ViewHolder(FoldableLayout foldableLayout) {
+            super(foldableLayout);
+            foldableLayout.setupViews(R.layout.fragment_portfolio, R.layout.fragment_portfolio_detail, R.dimen.foldable_portfolio_card_height, itemView.getContext());
+            cStockName = (TextView) foldableLayout.getCoverView().findViewById(R.id.portfolio_stock_name);
+            cStockPrice = (TextView) foldableLayout.getCoverView().findViewById(R.id.portfolio_stock_profit);
+            dStockName = (TextView) foldableLayout.getDetailView().findViewById(R.id.portfolio_detail_stock_name);
+            dStockQuantity = (TextView) foldableLayout.getDetailView().findViewById(R.id.portfolio_detail_stock_quantity);
+            dTradePrice = (TextView) foldableLayout.getDetailView().findViewById(R.id.portfolio_detail_trade_price);
+            dTradeProfit = (TextView) foldableLayout.getDetailView().findViewById(R.id.portfolio_detail_trade_profit);
+            dDate = (TextView) foldableLayout.getDetailView().findViewById(R.id.portfolio_detail_stock_date);
+            dTradeType = (TextView) foldableLayout.getDetailView().findViewById(R.id.portfolio_detail_trade_type);
+            cStockName.setTypeface(Dashboard.robotoLight);
+            cStockPrice.setTypeface(Dashboard.robotoLight);
+            dStockName.setTypeface(Dashboard.robotoLight);
+            dStockQuantity.setTypeface(Dashboard.robotoLight);
+            dTradePrice.setTypeface(Dashboard.robotoLight);
+            dTradeProfit.setTypeface(Dashboard.robotoLight);
+            dDate.setTypeface(Dashboard.robotoLight);
+            dTradeType.setTypeface(Dashboard.robotoLight);
+            mFoldableLayout = foldableLayout;
         }
 
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
-        }
     }
 }
