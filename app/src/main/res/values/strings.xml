@@ -24,7 +24,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="web_client_id">1087422679076-2usi3satfbmmcd9e41csj0gbmaihkdtl.apps.googleusercontent.com</string>
+    <string name="web_client_id">1087422679076-rsame41m3vaf9p2ppd2kljfopqdm0qs4.apps.googleusercontent.com</string>
 
     <!-- Strings related to Stocks-->
     <string name="is_up"  translatable="false">is_up</string>

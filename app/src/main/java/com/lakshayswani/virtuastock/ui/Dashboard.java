@@ -1,5 +1,7 @@
 package com.lakshayswani.virtuastock.ui;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +21,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +34,7 @@ import com.lakshayswani.virtuastock.model.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dashboard extends AppCompatActivity implements PortfolioFragment.OnListFragmentInteractionListener, StocksFragment.OnListFragmentInteractionListener, AccountFragment.OnFragmentInteractionListener, TradeFragment.OnFragmentInteractionListener {
+public class Dashboard extends AppCompatActivity implements PortfolioFragment.OnListFragmentInteractionListener, StocksFragment.OnListFragmentInteractionListener, AccountFragment.OnFragmentInteractionListener, TradeFragment.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener {
 
     public static DatabaseReference database;
 
@@ -194,4 +197,8 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
         database.child(currentUser.getUid()).setValue(user);
     }
 
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.d("GOOGLE", "onConnectionFailed:" + connectionResult);
+    }
 }

@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +20,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.lakshayswani.virtuastock.R;
 import com.lakshayswani.virtuastock.ui.Dashboard;
 import com.lakshayswani.virtuastock.ui.LoginActivity;
@@ -35,7 +39,13 @@ import com.lakshayswani.virtuastock.ui.LoginActivity;
  * Use the {@link AccountFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AccountFragment extends Fragment {
+public class AccountFragment extends Fragment implements
+        GoogleApiClient.OnConnectionFailedListener {
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
 
     static AccountFragment fragment;
 
@@ -55,6 +65,10 @@ public class AccountFragment extends Fragment {
     private FloatingActionButton logOut;
 
     private OnFragmentInteractionListener mListener;
+
+    private GoogleSignInOptions gso;
+
+    private GoogleApiClient mGoogleApiClient;
 
     public AccountFragment() {
         // Required empty public constructor
@@ -106,6 +120,16 @@ public class AccountFragment extends Fragment {
         newPasswordConfirm.setTypeface(Dashboard.robotoLight);
         submitUpdates.setTypeface(Dashboard.robotoLight);
 
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.web_client_id))
+                .requestEmail()
+                .build();
+
+        mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
+                .enableAutoManage(getActivity(), this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +139,11 @@ public class AccountFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         FirebaseAuth.getInstance().signOut();
+                        try {
+                            Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+                        } catch (Exception e) {
+                            Log.e("GOOGLE", e.getMessage());
+                        }
                         Intent in = new Intent(getActivity(), LoginActivity.class);
                         startActivity(in);
                         getActivity().finish();
@@ -133,15 +162,15 @@ public class AccountFragment extends Fragment {
         submitUpdates.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (newPassword.getText().toString().equalsIgnoreCase(newPasswordConfirm.getText().toString())) {
+                if ((newPassword.getText().toString().equalsIgnoreCase("")) || (newPasswordConfirm.getText().toString().equalsIgnoreCase(""))) {
+                    Toast.makeText(getActivity(), "Please enter the passwords to update", Toast.LENGTH_SHORT).show();
+                } else if (newPassword.getText().toString().equalsIgnoreCase(newPasswordConfirm.getText().toString())) {
                     Dashboard.currentUser.updatePassword(newPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             Toast.makeText(getActivity(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
                         }
                     });
-                } else if ((newPassword.getText().toString().equalsIgnoreCase("")) && (newPasswordConfirm.getText().toString().equalsIgnoreCase(""))) {
-                    Toast.makeText(getActivity(), "Please enter the passwords to update", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getActivity(), "The passwords do not match", Toast.LENGTH_SHORT).show();
                 }

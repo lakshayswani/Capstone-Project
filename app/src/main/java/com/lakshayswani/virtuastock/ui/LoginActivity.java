@@ -33,6 +33,9 @@ import com.lakshayswani.virtuastock.R;
 import static android.Manifest.permission.GET_ACCOUNTS;
 import static android.Manifest.permission.INTERNET;
 
+/**
+ * The type Login activity.
+ */
 public class LoginActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener {
 
@@ -43,9 +46,9 @@ public class LoginActivity extends AppCompatActivity implements
 
     private GoogleSignInOptions gso;
 
-    private static String TAG = "FIREBASE";
-
     private GoogleApiClient mGoogleApiClient;
+
+    private static String TAG = "FIREBASE";
 
     private int RC_SIGN_IN = 1;
 
@@ -75,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements
                 .build();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this , this )
+                .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
@@ -101,7 +104,7 @@ public class LoginActivity extends AppCompatActivity implements
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Toast.makeText(getApplicationContext(), "Welcome "+user.getDisplayName(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Welcome " + user.getDisplayName(), Toast.LENGTH_LONG).show();
                     Intent in = new Intent(getApplicationContext(), Dashboard.class);
                     startActivity(in);
                     // User is signed in
@@ -117,8 +120,7 @@ public class LoginActivity extends AppCompatActivity implements
 
     }
 
-    private void signInFirebase(final String emailId, final String password)
-    {
+    private void signInFirebase(final String emailId, final String password) {
         mAuth.signInWithEmailAndPassword(emailId, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -215,13 +217,10 @@ public class LoginActivity extends AppCompatActivity implements
                             Log.w(TAG, "signInWithCredential", task.getException());
                             Toast.makeText(getApplicationContext(), "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
+                        } else {
                             Toast.makeText(getApplicationContext(), "Signin with google successful",
                                     Toast.LENGTH_SHORT).show();
                         }
-                        // ...
                     }
                 });
     }
@@ -245,14 +244,14 @@ public class LoginActivity extends AppCompatActivity implements
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
         }
-        if ((checkSelfPermission(GET_ACCOUNTS) == PackageManager.PERMISSION_GRANTED)&&(checkSelfPermission(INTERNET) == PackageManager.PERMISSION_GRANTED)) {
+        if ((checkSelfPermission(GET_ACCOUNTS) == PackageManager.PERMISSION_GRANTED) && (checkSelfPermission(INTERNET) == PackageManager.PERMISSION_GRANTED)) {
             return true;
         }
-        if(checkSelfPermission(GET_ACCOUNTS) != PackageManager.PERMISSION_GRANTED)
-        requestPermissions(new String[]{GET_ACCOUNTS}, REQUEST_GET_ACCOUNTS);
+        if (checkSelfPermission(GET_ACCOUNTS) != PackageManager.PERMISSION_GRANTED)
+            requestPermissions(new String[]{GET_ACCOUNTS}, REQUEST_GET_ACCOUNTS);
 
-        if(checkSelfPermission(INTERNET) != PackageManager.PERMISSION_GRANTED)
-        requestPermissions(new String[]{INTERNET}, REQUEST_INTERNET);
+        if (checkSelfPermission(INTERNET) != PackageManager.PERMISSION_GRANTED)
+            requestPermissions(new String[]{INTERNET}, REQUEST_INTERNET);
 
         return false;
     }
