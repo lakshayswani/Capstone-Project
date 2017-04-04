@@ -48,8 +48,6 @@ public class TradeFragment extends Fragment {
 
     static TradeFragment fragment;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -178,9 +176,7 @@ public class TradeFragment extends Fragment {
                 stock_detail.loadUrl("https://in.finance.yahoo.com/q?s=" + savedInstanceState.getString("stockName") + "&ql=1");
                 stock_trade_price.setValueRange(savedInstanceState.getInt("bidPrice"), savedInstanceState.getInt("bidPrice") + 100, true);
                 stock_trade_quantity.setValueRange(0, savedInstanceState.getInt("bidQuantity"), true);
-            }
-            else
-            {
+            } else {
                 hideVisibility();
             }
         } else {
@@ -301,7 +297,6 @@ public class TradeFragment extends Fragment {
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);

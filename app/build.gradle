@@ -55,6 +55,10 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'net.simonvt.schematic:schematic:0.6.3'
     compile 'com.google.firebase:firebase-database:10.2.0'
+    compile('com.github.afollestad.material-dialogs:core:0.8.5.7@aar') {
+        transitive = true
+    }
+    compile 'com.melnykov:floatingactionbutton:1.2.0'
     testCompile 'junit:junit:4.12'
     apt 'net.simonvt.schematic:schematic-compiler:0.6.3'
 }

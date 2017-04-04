@@ -14,11 +14,14 @@ import android.support.v4.content.Loader;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.PeriodicTask;
 import com.google.android.gms.gcm.Task;
@@ -33,6 +36,7 @@ import com.lakshayswani.virtuastock.rest.RecyclerViewItemClickListener;
 import com.lakshayswani.virtuastock.service.StockIntentService;
 import com.lakshayswani.virtuastock.service.StockTaskService;
 import com.lakshayswani.virtuastock.ui.Dashboard;
+import com.melnykov.fab.FloatingActionButton;
 
 /**
  * A fragment representing a list of Items.
@@ -109,9 +113,8 @@ public class StocksFragment extends Fragment implements LoaderManager.LoaderCall
             }
         }
         // Set the adapter
-        if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.stocks_list);
 
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -135,8 +138,6 @@ public class StocksFragment extends Fragment implements LoaderManager.LoaderCall
                         }
                     }));
             recyclerView.setAdapter(mCursorAdapter);
-//            recyclerView.setAdapter(new MystocksRecyclerViewAdapter(DummyContent.ITEMS, mListener));
-        }
 
         if (isConnected) {
             long period = 3600L;
@@ -153,6 +154,45 @@ public class StocksFragment extends Fragment implements LoaderManager.LoaderCall
                     .build();
             GcmNetworkManager.getInstance(getActivity()).schedule(periodicTask);
         }
+
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.stocks_fab);
+        fab.attachToRecyclerView(recyclerView);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isConnected) {
+                    new MaterialDialog.Builder(getActivity()).title("Add new stock")
+                            .content("Please input a Stock Symbol")
+                            .inputType(InputType.TYPE_CLASS_TEXT)
+                            .input("FB", "", new MaterialDialog.InputCallback() {
+                                @Override
+                                public void onInput(MaterialDialog dialog, CharSequence input) {
+                                    // On FAB click, receive user input. Make sure the stock doesn't already exist
+                                    // in the DB and proceed accordingly
+                                    Cursor c = getActivity().getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,
+                                            new String[]{QuoteColumns.SYMBOL}, QuoteColumns.SYMBOL + "= ?",
+                                            new String[]{input.toString().toUpperCase()}, null);
+                                    if (c.getCount() != 0) {
+                                        Toast toast =
+                                                Toast.makeText(getActivity(), getResources().getString(R.string.string_tag),
+                                                        Toast.LENGTH_LONG);
+                                        toast.setGravity(Gravity.CENTER, Gravity.CENTER, 0);
+                                        toast.show();
+                                        return;
+                                    } else {
+                                        // Add the stock to DB
+                                        mServiceIntent.putExtra(getResources().getString(R.string.string_tag), "add");
+                                        mServiceIntent.putExtra(getResources().getString(R.string.string_symbol), input.toString());
+                                        getActivity().startService(mServiceIntent);
+                                    }
+                                }
+                            })
+                            .show();
+                } else {
+                }
+
+            }
+        });
 
         return view;
     }

@@ -24,6 +24,8 @@ import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -120,11 +122,13 @@ public class AccountFragment extends Fragment implements
         newPasswordConfirm.setTypeface(Dashboard.robotoLight);
         submitUpdates.setTypeface(Dashboard.robotoLight);
 
+        if(gso==null)
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.web_client_id))
                 .requestEmail()
                 .build();
 
+        if(mGoogleApiClient==null)
         mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
                 .enableAutoManage(getActivity(), this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
@@ -140,13 +144,17 @@ public class AccountFragment extends Fragment implements
                     public void onClick(DialogInterface dialog, int which) {
                         FirebaseAuth.getInstance().signOut();
                         try {
-                            Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+                            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
+                                @Override
+                                public void onResult(@NonNull Status status) {
+                                    Intent in = new Intent(getActivity(), LoginActivity.class);
+                                    startActivity(in);
+                                    getActivity().finish();
+                                }
+                            });
                         } catch (Exception e) {
                             Log.e("GOOGLE", e.getMessage());
                         }
-                        Intent in = new Intent(getActivity(), LoginActivity.class);
-                        startActivity(in);
-                        getActivity().finish();
                     }
                 });
                 alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
