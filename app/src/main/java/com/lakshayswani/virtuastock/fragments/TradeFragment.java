@@ -285,7 +285,7 @@ public class TradeFragment extends Fragment {
                                     int quantity = 10000 / price;
                                     showVisibility();
                                     stock_detail.loadUrl("https://in.finance.yahoo.com/q?s=" + stock_name_cover.getText() + "&ql=1");
-                                    stock_trade_price.setValueRange(price - 50, price + 50, true);
+                                    stock_trade_price.setValueRange((price) - 50, (price) + 50, true);
                                     stock_trade_quantity.setValueRange(0, quantity, true);
                                 }
                             }

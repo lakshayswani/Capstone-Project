@@ -2,13 +2,18 @@ package com.lakshayswani.virtuastock.ui;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.lakshayswani.virtuastock.fragments.*;
 
 import android.graphics.Typeface;
@@ -20,6 +25,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -37,6 +43,8 @@ import java.util.List;
 public class Dashboard extends AppCompatActivity implements PortfolioFragment.OnListFragmentInteractionListener, StocksFragment.OnListFragmentInteractionListener, AccountFragment.OnFragmentInteractionListener, TradeFragment.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener {
 
     public static DatabaseReference database;
+
+    public static StorageReference storageReference;
 
     public static FirebaseUser currentUser;
 
@@ -109,7 +117,12 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         database = FirebaseDatabase.getInstance().getReference();
+        storageReference = FirebaseStorage.getInstance().getReference();
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setTitle(getResources().getString(R.string.app_name));
         final String uid = currentUser.getUid();
         final String emailId = currentUser.getEmail();
 
@@ -127,7 +140,6 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
                     ArrayList<Stocks> stocks = new ArrayList<Stocks>();
                     for (DataSnapshot data : dataSnapshot.child("stocks").getChildren()) {
                         stocks.add(data.getValue(Stocks.class));
-                        Toast.makeText(Dashboard.this, "Stocks addinggggg", Toast.LENGTH_SHORT).show();
                     }
                     user.setStocks(stocks);
                 }
@@ -200,5 +212,10 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.d("GOOGLE", "onConnectionFailed:" + connectionResult);
+    }
+
+    public static void updateProfilePic(Uri uri)
+    {
+        storageReference.child(user.getUid()).putFile(uri);
     }
 }

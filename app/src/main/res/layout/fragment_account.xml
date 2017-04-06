@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -13,107 +13,102 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/header_cover_image"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                />
+
+            <ImageButton
+                android:id="@+id/user_profile_photo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/header_cover_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-30dp"
+                android:elevation="5dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_account_box_black_24dp" />
+
+            <RelativeLayout
+                android:id="@+id/profile_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/header_cover_image"
+                android:background="@color/colorPrimary"
+                android:elevation="4dp"
+                android:paddingBottom="24dp">
+
+
+                <ImageView
+                    android:id="@+id/logOut"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_exit_to_app_black_24dp" />
+
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="76dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:hint="Set Username"/>
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_layout"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical">
 
-                <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/logOut"
+                <EditText
+                    android:id="@+id/newPassword"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#fff"
+                    android:clickable="true"
+                    android:elevation="4dp"
+                    android:padding="20dp"
+                    android:hint="New Password" />
+
+                <EditText
+                    android:id="@+id/newPasswordConfirm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#fff"
+                    android:clickable="true"
+                    android:elevation="4dp"
+                    android:padding="20dp"
+                    android:hint="Confirm New Password" />
+
+                <Button
+                    android:id="@+id/submitUpdates"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/ic_exit_to_app_black_24dp"
-                    />
-
-                <com.github.florent37.materialtextfield.MaterialTextField
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="2dp"
-                    app:mtf_backgroundColor="@color/colorPrimary"
-                    app:mtf_image="@drawable/ic_account_box_black_24dp"
-                    app:mtf_labelColor="@color/colorAccent"
-                    app:mtf_openKeyboardOnFocus="true">
-
-                    <EditText
-                        android:id="@+id/username"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Username"
-                        android:singleLine="true"
-                        android:textColor="@android:color/white"
-                        android:textColorHint="#FF4081"
-                        android:textSize="15sp" />
-
-                </com.github.florent37.materialtextfield.MaterialTextField>
-
-                <com.github.florent37.materialtextfield.MaterialTextField
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="2dp"
-                    app:mtf_backgroundColor="@color/colorPrimary"
-                    app:mtf_image="@drawable/ic_vpn_key_black_24dp"
-                    app:mtf_labelColor="@color/colorAccent"
-                    app:mtf_openKeyboardOnFocus="true">
-
-                    <EditText
-                        android:id="@+id/newPassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="New Password"
-                        android:singleLine="true"
-                        android:textColor="@android:color/white"
-                        android:textColorHint="#FF4081"
-                        android:textSize="15sp" />
-
-                </com.github.florent37.materialtextfield.MaterialTextField>
-
-                <com.github.florent37.materialtextfield.MaterialTextField
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="2dp"
-                    app:mtf_backgroundColor="@color/colorPrimary"
-                    app:mtf_image="@drawable/ic_vpn_key_black_24dp"
-                    app:mtf_labelColor="@color/colorAccent"
-                    app:mtf_openKeyboardOnFocus="true">
-
-                    <EditText
-                        android:id="@+id/newPasswordConfirm"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Confirm New Password"
-                        android:singleLine="true"
-                        android:textColor="@android:color/white"
-                        android:textColorHint="#FF4081"
-                        android:textSize="15sp" />
-
-                </com.github.florent37.materialtextfield.MaterialTextField>
-
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_margin="5dp"
+                    android:background="#fff"
+                    android:clickable="true"
+                    android:elevation="4dp"
+                    android:padding="20dp"
                     android:layout_gravity="center"
-                    android:background="@android:color/white">
-
-                    <Button
-                        android:id="@+id/submitUpdates"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@color/colorPrimary"
-                        android:padding="5dp"
-                        android:text="Update"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp" />
-
-                </android.support.v7.widget.CardView>
+                    android:text="Submit Updates" />
 
             </LinearLayout>
         </RelativeLayout>

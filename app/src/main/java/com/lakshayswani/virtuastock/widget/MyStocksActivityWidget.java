@@ -18,7 +18,6 @@ public class MyStocksActivityWidget extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,int appWidgetId) {
 
-//        CharSequence widgetText = context.getString(R.string.appwidget_text);
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
         views.setTextViewText(R.id.widget_balance, "Stocks");
         views.setRemoteAdapter(R.id.widget_stock_list, new Intent(context, WidgetRemoteViewsFactory.class));

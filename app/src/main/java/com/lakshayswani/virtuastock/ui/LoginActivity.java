@@ -34,8 +34,11 @@ import com.lakshayswani.virtuastock.R;
 
 import org.w3c.dom.Text;
 
+import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.GET_ACCOUNTS;
 import static android.Manifest.permission.INTERNET;
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 /**
  * The type Login activity.
@@ -232,6 +235,11 @@ public class LoginActivity extends AppCompatActivity implements
     }
 
     private static final int REQUEST_INTERNET = 2;
+    private static final int REQUEST_STORAGE = 3;
+    private static final int REQUEST_CAMERA = 4;
+    private static final int REQUEST_CAMERA_SERVICE = 5;
+    private static final int REQUEST_STORAGE_WRITE = 6;
+
 
 
     private void populateAutoComplete() {
@@ -244,11 +252,19 @@ public class LoginActivity extends AppCompatActivity implements
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
         }
-        if ((checkSelfPermission(INTERNET) == PackageManager.PERMISSION_GRANTED)) {
+        if ((checkSelfPermission(INTERNET) == PackageManager.PERMISSION_GRANTED)&&(checkSelfPermission(READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)&&(checkSelfPermission(CAMERA) == PackageManager.PERMISSION_GRANTED)&&(checkSelfPermission(WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)&&(checkSelfPermission(CAMERA_SERVICE) == PackageManager.PERMISSION_GRANTED)) {
             return true;
         }
         if (checkSelfPermission(INTERNET) != PackageManager.PERMISSION_GRANTED)
             requestPermissions(new String[]{INTERNET}, REQUEST_INTERNET);
+        if (checkSelfPermission(READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+            requestPermissions(new String[]{READ_EXTERNAL_STORAGE}, REQUEST_STORAGE);
+        if (checkSelfPermission(CAMERA) != PackageManager.PERMISSION_GRANTED)
+            requestPermissions(new String[]{CAMERA}, REQUEST_CAMERA);
+        if (checkSelfPermission(WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+            requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE_WRITE);
+        if (checkSelfPermission(CAMERA_SERVICE) != PackageManager.PERMISSION_GRANTED)
+            requestPermissions(new String[]{CAMERA_SERVICE}, REQUEST_CAMERA_SERVICE);
 
         return false;
     }

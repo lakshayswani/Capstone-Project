@@ -1,12 +1,18 @@
 package com.lakshayswani.virtuastock.fragments;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +23,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,9 +37,20 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.lakshayswani.virtuastock.R;
 import com.lakshayswani.virtuastock.ui.Dashboard;
 import com.lakshayswani.virtuastock.ui.LoginActivity;
+import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,6 +67,11 @@ public class AccountFragment extends Fragment implements
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+    protected static final int CAMERA_REQUEST = 0;
+    protected static final int GALLERY_REQUEST = 1;
+    Bitmap bitmap;
+    Uri uri;
+    Intent picIntent = null;
 
     static AccountFragment fragment;
 
@@ -64,7 +88,10 @@ public class AccountFragment extends Fragment implements
     private EditText newPassword;
     private EditText newPasswordConfirm;
     private Button submitUpdates;
-    private FloatingActionButton logOut;
+    private ImageView logOut;
+
+    private ImageView header_cover_image;
+    private ImageButton user_profile_photo;
 
     private OnFragmentInteractionListener mListener;
 
@@ -115,24 +142,56 @@ public class AccountFragment extends Fragment implements
         newPassword = (EditText) view.findViewById(R.id.newPassword);
         newPasswordConfirm = (EditText) view.findViewById(R.id.newPasswordConfirm);
         submitUpdates = (Button) view.findViewById(R.id.submitUpdates);
-        logOut = (FloatingActionButton) view.findViewById(R.id.logOut);
+        logOut = (ImageView) view.findViewById(R.id.logOut);
 
         username.setTypeface(Dashboard.robotoLight);
         newPassword.setTypeface(Dashboard.robotoLight);
         newPasswordConfirm.setTypeface(Dashboard.robotoLight);
         submitUpdates.setTypeface(Dashboard.robotoLight);
 
-        if(gso==null)
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.web_client_id))
-                .requestEmail()
-                .build();
+        user_profile_photo = (ImageButton) view.findViewById(R.id.user_profile_photo);
+        header_cover_image = (ImageView) view.findViewById(R.id.header_cover_image);
 
-        if(mGoogleApiClient==null)
-        mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
-                .enableAutoManage(getActivity(), this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
+        if (gso == null)
+            gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.web_client_id))
+                    .requestEmail()
+                    .build();
+
+        if (mGoogleApiClient == null)
+            mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
+                    .enableAutoManage(getActivity(), this)
+                    .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                    .build();
+
+        if (Dashboard.currentUser.getDisplayName() != null)
+            username.setText(Dashboard.currentUser.getDisplayName());
+
+        if(savedInstanceState==null)
+            Dashboard.storageReference.child(Dashboard.currentUser.getUid()).getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if(task.isSuccessful())
+                        Picasso.with(getActivity().getApplicationContext()).load(task.getResult()).into(header_cover_image);
+                }
+            });
+        else if(savedInstanceState.getParcelable("ProfilePic")==null)
+        Dashboard.storageReference.child(Dashboard.currentUser.getUid()).getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if(task.isSuccessful())
+                Picasso.with(getActivity().getApplicationContext()).load(task.getResult()).into(header_cover_image);
+            }
+        });
+        else
+            header_cover_image.setImageBitmap((Bitmap)savedInstanceState.getParcelable("ProfilePic"));
+
+        user_profile_photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startDilog();
+            }
+        });
 
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,6 +213,9 @@ public class AccountFragment extends Fragment implements
                             });
                         } catch (Exception e) {
                             Log.e("GOOGLE", e.getMessage());
+                            Intent in = new Intent(getActivity(), LoginActivity.class);
+                            startActivity(in);
+                            getActivity().finish();
                         }
                     }
                 });
@@ -170,8 +232,21 @@ public class AccountFragment extends Fragment implements
         submitUpdates.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String newUsername = null;
+                if(username.getText().toString().equalsIgnoreCase(""))
+                {
+                    newUsername = "Not Set";
+                }
+                else
+                {
+                    newUsername = username.getText().toString();
+                }
+                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                        .setDisplayName(newUsername)
+                        .build();
+                Dashboard.currentUser.updateProfile(profileUpdates);
                 if ((newPassword.getText().toString().equalsIgnoreCase("")) || (newPasswordConfirm.getText().toString().equalsIgnoreCase(""))) {
-                    Toast.makeText(getActivity(), "Please enter the passwords to update", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
                 } else if (newPassword.getText().toString().equalsIgnoreCase(newPasswordConfirm.getText().toString())) {
                     Dashboard.currentUser.updatePassword(newPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -229,11 +304,139 @@ public class AccountFragment extends Fragment implements
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
+
+        try {
+            outState.putParcelable("ProfilePic", ((BitmapDrawable) header_cover_image.getDrawable()).getBitmap());
+        }catch (Exception e)
+        {
+            Log.e("Saving State", e.getMessage());
+        }
         super.onSaveInstanceState(outState);
     }
 
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
+    }
+
+    private void startDilog() {
+        AlertDialog.Builder myAlertDilog = new AlertDialog.Builder(getActivity());
+        myAlertDilog.setTitle("Upload picture option..");
+        myAlertDilog.setMessage("Where to upload picture????");
+        myAlertDilog.setPositiveButton("Gallery", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                picIntent = new Intent(Intent.ACTION_GET_CONTENT,null);
+                picIntent.setType("image/*");
+                picIntent.putExtra("return_data",true);
+                startActivityForResult(picIntent,GALLERY_REQUEST);
+            }
+        });
+        myAlertDilog.setNegativeButton("Camera", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                picIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(picIntent,CAMERA_REQUEST);
+            }
+        });
+        myAlertDilog.show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==GALLERY_REQUEST){
+            if (resultCode==RESULT_OK){
+                if (data!=null) {
+                    uri = data.getData();
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inJustDecodeBounds = true;
+                    try {
+                        BitmapFactory.decodeStream(getActivity().getContentResolver().openInputStream(uri), null, options);
+                        options.inSampleSize = calculateInSampleSize(options, 400, 400);
+                        options.inJustDecodeBounds = false;
+                        Bitmap image = BitmapFactory.decodeStream(getActivity().getContentResolver().openInputStream(uri), null, options);
+                        header_cover_image.setImageBitmap(image);
+                        Dashboard.updateProfilePic(uri);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }else {
+                    Toast.makeText(getActivity().getApplicationContext(), "Cancelled",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(getActivity().getApplicationContext(), "Cancelled",
+                        Toast.LENGTH_SHORT).show();
+            }
+        }else if (requestCode == CAMERA_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                if (data.hasExtra("data")) {
+                    bitmap = (Bitmap) data.getExtras().get("data");
+                    uri = getImageUri(getActivity(),bitmap);
+                    File finalFile = new File(getRealPathFromUri(uri));
+                    header_cover_image.setImageBitmap(bitmap);
+                    Dashboard.updateProfilePic(uri);
+                } else if (data.getExtras() == null) {
+
+                    Toast.makeText(getActivity().getApplicationContext(),
+                            "No extras to retrieve!", Toast.LENGTH_SHORT)
+                            .show();
+
+                    BitmapDrawable thumbnail = new BitmapDrawable(
+                            getResources(), data.getData().getPath());
+                    header_cover_image.setImageDrawable(thumbnail);
+
+
+                }
+
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(getActivity().getApplicationContext(), "Cancelled",
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private String getRealPathFromUri(Uri tempUri) {
+        Cursor cursor = null;
+        try {
+            String[] proj = { MediaStore.Images.Media.DATA };
+            cursor = getActivity().getContentResolver().query(tempUri,  proj, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+    }
+    public static int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) > reqHeight
+                    && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
+    }
+
+    private Uri getImageUri(Activity activity, Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        String path = MediaStore.Images.Media.insertImage(activity.getContentResolver(), bitmap, "Title", null);
+        return Uri.parse(path);
     }
 }

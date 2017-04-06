@@ -3,165 +3,30 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\73d564de72d48de685e4870ea349da20dec383bb\output\jars\classes.jar"
+        jar="C:\Users\lakshay.swani\.android\build-cache\45fea40d0ea27b4385aa168132cc0ab1f647870a\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="0d5cbbbfe040201c7569478b70a13b58fd11aab4">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_1d8ea3a8d801fc1244d7b316c88955e6e67fff14.jar" />
+        sha1="8e1d31656bc9f1889283836e025e6cb703acd38a">
+        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_697200a94988017ce4b48d7db31ad9db67551786.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\140e830744746f88524d8528f04d2069ec395d0d\output\jars\classes.jar"
+        jar="C:\Users\lakshay.swani\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="4e01b82d664e1a8253b2b9658e74b5da35c8771d">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_cf35b6d0f4b976ce6f2e9d41e9dad23d30311fcf.jar" />
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\picasso-2.5.2_8bfc50aa31239edd886dcf6edd5ffa2f7766210f.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\0646d39ad588219455564c2ff61d3d6d83958838\output\jars\classes.jar"
+        jar="C:\Users\lakshay.swani\.android\build-cache\9183433ca3e7de577b10254841f0f519dfa28228\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="4a9f97c742d058ca55948643c06f447895a9af76">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_db8588db8a95b0cd7553f1317d3817b3c54c39b9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\3c0ab74d2d6b3f81049a91eba56cf4d12fc0ff06\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0e301f24b283f14b564f660c9abe863af6be5896">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_71d4cce89ff437b53d95f1b2d53d4c95aae092fb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lakshay.swani\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\library-2.4.0_5f2231cbab9dfd9963fb6c30a6255f7e7df81dab.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\bd3d4269e0f110c48b7ae32599cc325cc2ed30b5\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="bd75f9f0296fe220da6d0ad961831b04541c4452">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_b50e8544db5819be85ccbbbb931f3dd6bf364f7e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\ab2470af3fbe56c44c87d5b4495a63052b0e11a3\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="48532a016bb0dfbe7970c147ce784598a515406b">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_1d8959a534f610ec88ea676173f4f96a52783124.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\e8867c96fa91ab9b995cbd5edbee9d60eca3cb28\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a94e3ac390a37f149a235f7f5e1b49b65151c0bf">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_30cd6cb58a980dbd228692a52adedbe75204b0bf.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\a3e1665be8207d55420ac09cc497bb8f953b4293\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3d13e510077b35fe8e49930a627dd849ad5da0dc">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_b0cf4327187c9f57f19549b4cc98e0545e24d943.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\c31857248e1539b6cbceff4aff83d5b69ecb617e\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="65620ba5e576dcec2c86efa440b00d042a27383b">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_34a4ef68749432461a8b504f9246baed52123eff.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\ae3faf23a216d4d1b76ec661bbba570ebe24457b\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="421a5cebe9ff187c98075c59786e9464c5c67d36">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_2634a8b9a1b060b7b4ae4baefee1b63ba4b8354a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\037d0409cc66e74ac0bfd5f99e34f29a739dedeb\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="1ac56e5801e986583cbe27f2cce57f626cc7ff93">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_7a02849d2699709400c4d32157349fc15b33c05d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\a60f0fa2054a99ef7293a5bf0432377e97104bcd\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="94fca868854457ede6df15c902938468c71d579e">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_53f1c5a73e434e196850946c57c6c9f0a6e3e19c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\460147c703eea5c3f9db7ec2fbeae0013c463607\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b831d3902674d096189451d46fce219e2c2904b7">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_aad4635368c21ba5fe3115d3f3580676f1d4f1ee.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\3a69de078481c08880e7725d1f0750aadcb3bc7a\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ce9112e08a027c8620ae693983e38cdbb9f6371b">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_26f0fb07464f0d28c5a1c9349c522228673c9df9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\dd0ddc7b312b2c0c86c328a81def4073b6b879a8\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="3d6951cb416ebf8c66a32b9480808ca247b68344">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_af2ce4f03d50252b6486efc656ee2e1ebb852039.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\9256f170b519d302371150a71050911a1b2dbf9e\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ea03bbfaed89818f233ee9918fac493f2b63895a">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_4d53008d852322a40145aada41bf9402ad13cb55.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\lakshay.swani\.android\build-cache\64d79ff20eb2122bed34fd7c12db8833b2af9837\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="a61e7010aa7be5da53cd1bc5279630510c9a4912">
-        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_b85846d69561fb4fd36d0cabcc6fff84d38c95ee.jar" />
+        sha1="1df6d719c4e264d66bb98baa5cb637495b8cca66">
+        <dex dex="D:\android\Virtua-Stock\app\build\intermediates\pre-dexed\debug\classes_c27764976dbecab1104c5f72bcc4de7ecc73760f.jar" />
     </item>
 
 </items>

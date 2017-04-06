@@ -65,7 +65,7 @@ public class WidgetRemoteViewsFactory extends RemoteViewsService {
                     return null;
                 }
 
-                RemoteViews views = new RemoteViews(getPackageName(), R.layout.widget_item_layout);
+                RemoteViews views = new RemoteViews(getPackageName(), R.layout.new_widget_item_layout);
                 String symbol = data.getString(data.getColumnIndex(getResources().getString(R.string.string_symbol)));
 
                 views.setTextViewText(R.id.stock_symbol, symbol);
