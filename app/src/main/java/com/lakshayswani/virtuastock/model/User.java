@@ -170,14 +170,11 @@ public class User {
      */
     public void balanceUpdate(String tradeType, int bidPrice, int quantity) {
         int currentBalance = Integer.parseInt(balance);
-        if(tradeType.equalsIgnoreCase("buy"))
-        {
-            currentBalance = currentBalance - (bidPrice*quantity);
+        if (tradeType.equalsIgnoreCase("buy")) {
+            currentBalance = currentBalance - (bidPrice * quantity);
+        } else if (tradeType.equalsIgnoreCase("sell")) {
+            currentBalance = currentBalance + (bidPrice * quantity);
         }
-        else if(tradeType.equalsIgnoreCase("sell"))
-        {
-            currentBalance = currentBalance + (bidPrice*quantity);
-        }
-        balance = ""+ currentBalance;
+        balance = "" + currentBalance;
     }
 }

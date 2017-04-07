@@ -22,7 +22,7 @@ public class MyStocksActivityWidget extends AppWidgetProvider {
      * @param appWidgetManager the app widget manager
      * @param appWidgetId      the app widget id
      */
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,int appWidgetId) {
+    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
 
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
         views.setTextViewText(R.id.widget_balance, context.getResources().getString(R.string.app_name));

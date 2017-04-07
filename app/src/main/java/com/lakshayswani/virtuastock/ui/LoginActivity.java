@@ -239,7 +239,6 @@ public class LoginActivity extends AppCompatActivity implements
     private static final int REQUEST_STORAGE_WRITE = 6;
 
 
-
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -250,7 +249,7 @@ public class LoginActivity extends AppCompatActivity implements
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
         }
-        if ((checkSelfPermission(INTERNET) == PackageManager.PERMISSION_GRANTED)&&(checkSelfPermission(READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)&&(checkSelfPermission(CAMERA) == PackageManager.PERMISSION_GRANTED)&&(checkSelfPermission(WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)&&(checkSelfPermission(CAMERA_SERVICE) == PackageManager.PERMISSION_GRANTED)) {
+        if ((checkSelfPermission(INTERNET) == PackageManager.PERMISSION_GRANTED) && (checkSelfPermission(READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) && (checkSelfPermission(CAMERA) == PackageManager.PERMISSION_GRANTED) && (checkSelfPermission(WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) && (checkSelfPermission(CAMERA_SERVICE) == PackageManager.PERMISSION_GRANTED)) {
             return true;
         }
         if (checkSelfPermission(INTERNET) != PackageManager.PERMISSION_GRANTED)

@@ -24,6 +24,6 @@
         android:layout_height="wrap_content"
         android:divider="@null"
         android:dividerHeight="0dp"
-        tools:listitem="@layout/widget_item_layout"/>
+        tools:listitem="@layout/widget_item_layout" />
 
 </LinearLayout>

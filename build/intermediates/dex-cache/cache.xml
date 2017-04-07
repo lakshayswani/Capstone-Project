@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\235a6a701c746ea134b1bacb4383bcbb37019170\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="89ba8466f3e32427af7aa725eb7be31a15c78a77">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_5a7848c5ee56c8918007b9db62a37a0378db1fd1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\d90d7cd38589d6f4b564d3a067067e61789442d0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0e301f24b283f14b564f660c9abe863af6be5896">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_3c2a4cecb13ff54e7baa067d4c266e5fe9bfb98b.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Udacity\Virtua Stock\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_fde34f46b12acec5b4352d59c2ffda66063b7e8c\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.5.0\4de2b4ed3445c37ec1720a7d214712e845a24636\okhttp-2.5.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4de2b4ed3445c37ec1720a7d214712e845a24636">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\okhttp-2.5.0_d1c7153576f7f11b0d4761896b3b0f891203da9a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.gradle\caches\modules-2\files-2.1\com.firebase\firebase-client-jvm\2.5.2\91731b8f5868a3e8a8a773f29b8d06b5c358f5bb\firebase-client-jvm-2.5.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="91731b8f5868a3e8a8a773f29b8d06b5c358f5bb">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\firebase-client-jvm-2.5.2_8bb520dfc2aeedcf26ab6f18697529cb45cba4c7.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\library-2.4.0_d1d2405b41fac7202b0c13e704d4336128b69953\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-annotations\2.2.2\285cb9c666f0f0f3dd8a1be04e1f457eb7b15113\jackson-annotations-2.2.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\jackson-annotations-2.2.2_5c2127a4181d7edc3aca8a35c2fb916c1e406cff.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.gradle\caches\modules-2\files-2.1\com.firebase\tubesock\0.0.12\6ec0bbd3e161a73ed672284b587fd32309a86d7a\tubesock-0.0.12.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6ec0bbd3e161a73ed672284b587fd32309a86d7a">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\tubesock-0.0.12_8034244b095b947f263d890d0b4fa12d2ac68046.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\6608409b874f4e73d10b16a828a89c24ecb90c11\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a8ae156c2726ac9c56daaf4b49452ec2cdb7bba9">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_61ba3c5552f20bf125a4c6a098b8547080a0a49e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.gradle\caches\modules-2\files-2.1\net.simonvt.schematic\schematic-annotations\0.6.3\4df5a4bbbacf9ea3c4aebf7d3c61465afb648e36\schematic-annotations-0.6.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4df5a4bbbacf9ea3c4aebf7d3c61465afb648e36">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\schematic-annotations-0.6.3_0daef3ca997253460d5e7209a2055bf2435f0875.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\cb0c339350ea1bf37ce7fb70be9db4e84a92dd82\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4e01b82d664e1a8253b2b9658e74b5da35c8771d">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_eb7c5ac6361cea89c7b2261225cf4018ae25c2e8.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\6485bc164c97577aedd95a7a0dffe1a4833c3e0a\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bd75f9f0296fe220da6d0ad961831b04541c4452">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cf1e4ed610d9797a35d2dcd74003dad6ca038ede\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\83a14b913821150e8a1792cd2f64e50445bfe613\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="421a5cebe9ff187c98075c59786e9464c5c67d36">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_ef4228db9d78dc9c8aae8c9978af3f21cd342505.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\9e9d0f0274047fa20bd9bb1e947cbd69f6018d9f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="48532a016bb0dfbe7970c147ce784598a515406b">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7940f68e9475b0023f46324f5c47495116b7b1ad\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\09dfd40cfb6794a94fd8eb03bba896b815950ef2\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1ac56e5801e986583cbe27f2cce57f626cc7ff93">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_2a80e3c9488bcdee8efb88f1df8e5c87c29dd59a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\06b2154bb1d1ab19fde2c0508cd808b0d9df3cde\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="15b049fedbd8e3926bf99d9e45dfc9b2a1043bb9">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_1b75e6791e3ea72b33c02dbcfa26d8cd7437f5ac.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\8a6eeb0dd7e4a16956ed28673f07d69a06fe5a70\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_f0069d4bde5b2f7b01d61ae490416c8cc8283871.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\e928cf8069925e3ab7d80d082e1e6ef303dc4490\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ce9112e08a027c8620ae693983e38cdbb9f6371b">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_4a14dd1297ce2950ea61659f76a5acfa221795a2.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\09dfd40cfb6794a94fd8eb03bba896b815950ef2\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1ac56e5801e986583cbe27f2cce57f626cc7ff93">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2a80e3c9488bcdee8efb88f1df8e5c87c29dd59a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\8276b2cf53662083614590ae506390e76ff4d791\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a61e7010aa7be5da53cd1bc5279630510c9a4912">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_95ff66416a53b26fc9c1e6d315afcb64ad11af8a\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\9e9d0f0274047fa20bd9bb1e947cbd69f6018d9f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="48532a016bb0dfbe7970c147ce784598a515406b">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_7940f68e9475b0023f46324f5c47495116b7b1ad.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\d0c8a90f6dca5474edb7d938ad3f05a019f9b604\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="94fca868854457ede6df15c902938468c71d579e">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_5957118f443bdf3def06c6059a100364e2c346c6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\fe4372a82db10eaac7ccaa1c4e4ab1a46227cc0e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b831d3902674d096189451d46fce219e2c2904b7">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_8f4209ee4f720eaed8aa8ee579eeadfcd8f2e0b7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\148ae272d71200b6730ccc2653bfb0e68ae6ffc6\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a9f97c742d058ca55948643c06f447895a9af76">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_890b2c5c112532f4ddb08e8a93211715478e0316.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\9b3bfd97f5b8cb49e2c92018c67587f7507f40ba\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a94e3ac390a37f149a235f7f5e1b49b65151c0bf">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3709ba956826ebf49de87290b8071ef9e6fd7ab5\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\83c77ab48cd1296ca9a4e497d03156d41f6ec6e6\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8e1d31656bc9f1889283836e025e6cb703acd38a">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_de1c798ff8198cbbffea999dc853c526cf104256.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\a440596225d088e0322ded97a839eb2292a214a5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1df6d719c4e264d66bb98baa5cb637495b8cca66">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_3472be65d7a4c9ef731d3327ceb71eaf40f39331.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\e9ed0fc291c99958a57fb771d3a2a0f676665e8b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_5d170ec8cf5cab00028c760ca6dbeb0b09cf871a.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\e12080053df07b647d788a29bb8ba130dbbc1a11\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="65620ba5e576dcec2c86efa440b00d042a27383b">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f2491421a2590993f3b7f16201be8ca4c984ad25\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\picasso-2.5.2_08ed79868f1ec893b338f1d2abe1328ebd861fbf\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="98476622f10715998eacf9240d6b479f12c66143">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\okio-1.6.0_bb667456c4c138a2f705fdb70d5b227012b899ab.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\c0af966fc74cb9f2c693be5fcc9885fadbc669c5\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0d5cbbbfe040201c7569478b70a13b58fd11aab4">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f44f2f8ae8cb82a8392c03051103f07a47a6d379\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\03319e7170dc691396e034c7094d2c67d8546f35\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3d6951cb416ebf8c66a32b9480808ca247b68344">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_844e3d74db0142dc2d71deb0e4ed16eca093b6cc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\6d6ece8262078631f924bbe6f74d987211e5c4f4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ea03bbfaed89818f233ee9918fac493f2b63895a">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_c412777ff1707e1bad62886497f620f4466d0af1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\767afb9a7045b73a2844e8876733fb1208056e80\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fa8ab65ece31355155f90001d1718c0c59e5576c">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_62066d51a29978f1d6f99ee35f3ee3ad3002faaa.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\786f28394d08154c5a5b2bb5b06dd8772b231028\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_c025ec79590ab85fb49328184939a516b2f0cf8e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\62051373639b18cf1c18b245df4bb3281fcb98c3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_c7b06b44c930872cafa48118e1852c44c20023c4.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\d90d7cd38589d6f4b564d3a067067e61789442d0\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0e301f24b283f14b564f660c9abe863af6be5896">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3c2a4cecb13ff54e7baa067d4c266e5fe9bfb98b\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-databind\2.2.2\3c8f6018eaa72d43b261181e801e6f8676c16ef6\jackson-databind-2.2.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\jackson-databind-2.2.2_4bd27a9bdcad1f4f13886edff89da351b4c71163.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\library-2.4.0_d1d2405b41fac7202b0c13e704d4336128b69953.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\cb0c339350ea1bf37ce7fb70be9db4e84a92dd82\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4e01b82d664e1a8253b2b9658e74b5da35c8771d">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_eb7c5ac6361cea89c7b2261225cf4018ae25c2e8\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.0-beta3\constraint-layout-solver-1.0.0-beta3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="22c1e9d26251df254de7cc9dee01f5f134b10eba">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\constraint-layout-solver-1.0.0-beta3_1b7dbbf15e16a1d89b2f1bb361155cf98cbdb57b.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\83a14b913821150e8a1792cd2f64e50445bfe613\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="421a5cebe9ff187c98075c59786e9464c5c67d36">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ef4228db9d78dc9c8aae8c9978af3f21cd342505\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\6485bc164c97577aedd95a7a0dffe1a4833c3e0a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bd75f9f0296fe220da6d0ad961831b04541c4452">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_cf1e4ed610d9797a35d2dcd74003dad6ca038ede.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\148ae272d71200b6730ccc2653bfb0e68ae6ffc6\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a9f97c742d058ca55948643c06f447895a9af76">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_890b2c5c112532f4ddb08e8a93211715478e0316\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.gradle\caches\modules-2\files-2.1\com.firebase\firebase-client-android\2.5.2\f19f10d6276aa0b380e2d05d2ab3272d693a5433\firebase-client-android-2.5.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f19f10d6276aa0b380e2d05d2ab3272d693a5433">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\firebase-client-android-2.5.2_8b726e0d30896f325801ccc5cb51876022ae0f50.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\3e6b83afc542755f0576241a9db45ef8791b7aed\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3d13e510077b35fe8e49930a627dd849ad5da0dc">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_cec362ec73ed6a57867fc85452e1c0cc7bb0961c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.2.2\d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b\jackson-core-2.2.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\jackson-core-2.2.2_8d6b8e982039b98fc96e4172451996ccc90a3e27.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\1bdac061ca19c4b7a7e786749a2ff930a30129b4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f6f5730f19d22f177096c8d134d4892b0fbd631d">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_79f6628c628063ac245d01ef4be437023a9934f2.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\e928cf8069925e3ab7d80d082e1e6ef303dc4490\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ce9112e08a027c8620ae693983e38cdbb9f6371b">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4a14dd1297ce2950ea61659f76a5acfa221795a2\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\8276b2cf53662083614590ae506390e76ff4d791\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a61e7010aa7be5da53cd1bc5279630510c9a4912">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_95ff66416a53b26fc9c1e6d315afcb64ad11af8a.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\83c77ab48cd1296ca9a4e497d03156d41f6ec6e6\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8e1d31656bc9f1889283836e025e6cb703acd38a">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_de1c798ff8198cbbffea999dc853c526cf104256\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\d0c8a90f6dca5474edb7d938ad3f05a019f9b604\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="94fca868854457ede6df15c902938468c71d579e">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5957118f443bdf3def06c6059a100364e2c346c6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\3e6b83afc542755f0576241a9db45ef8791b7aed\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3d13e510077b35fe8e49930a627dd849ad5da0dc">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cec362ec73ed6a57867fc85452e1c0cc7bb0961c\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\068bf3b5945f96a375383ee7b0785cfd7494bff1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8419191d25f4105772fc16b55a005a270cb4d4c8">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_ee977e08f8eeff6f50c3f3e29ccde8a585d1621b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\bbc65c067713a4bd456b6c50d91924c232d370f3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b81d40d208a3308c8e81b2cccd3054238a13d140">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_91ffdd5c868ad65501d4d9722f6b21e72909106e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\9b3bfd97f5b8cb49e2c92018c67587f7507f40ba\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a94e3ac390a37f149a235f7f5e1b49b65151c0bf">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_3709ba956826ebf49de87290b8071ef9e6fd7ab5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\bcd0965c408b25ab752bcb0d0e7702381af7b092\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_5203a197ea7f17fbb9c88760da8bfdb173c2a6cc.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\fe4372a82db10eaac7ccaa1c4e4ab1a46227cc0e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b831d3902674d096189451d46fce219e2c2904b7">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8f4209ee4f720eaed8aa8ee579eeadfcd8f2e0b7\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\c1345abc5cd203188bd408175df18233eecb1f1b\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_0565d6fb1ee78c61c763c049f630343cf386d4b0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\d5dc47e2040b49979acd4622f08662ff3f726ded\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c9649557905bf7a80fca9e0d54cbcb7662627860">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_6afa6e730c09e74e8132fe474dd60c3cf5387be1.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\a440596225d088e0322ded97a839eb2292a214a5\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1df6d719c4e264d66bb98baa5cb637495b8cca66">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3472be65d7a4c9ef731d3327ceb71eaf40f39331\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\03319e7170dc691396e034c7094d2c67d8546f35\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3d6951cb416ebf8c66a32b9480808ca247b68344">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_844e3d74db0142dc2d71deb0e4ed16eca093b6cc\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\7b97981970e571fb2f3a577df0bd44821a4eab50\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_0dfc407576332cd3fb7b173101d0bc6074087abc.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Udacity\Virtua Stock\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a764ec33dc11a4f05bb518e78c3548af020574f8">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_7f010f9434aca01ca6533cf72ec5ffd392988139\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\c0af966fc74cb9f2c693be5fcc9885fadbc669c5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0d5cbbbfe040201c7569478b70a13b58fd11aab4">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_f44f2f8ae8cb82a8392c03051103f07a47a6d379.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\ad5c4d220dc8bf88e81334ca3ae00190f23948e3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_deceb301c2ba97b235f335f9743cd46fae00d6e5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\picasso-2.5.2_08ed79868f1ec893b338f1d2abe1328ebd861fbf.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\lenovo\.android\build-cache\6d6ece8262078631f924bbe6f74d987211e5c4f4\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ea03bbfaed89818f233ee9918fac493f2b63895a">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c412777ff1707e1bad62886497f620f4466d0af1\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\818a54447f57a1c4491d1fbef4bca9bc200d3c58\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_8ada6a9a76375ac1bb3d99d75489696fd34b43da.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\e12080053df07b647d788a29bb8ba130dbbc1a11\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="65620ba5e576dcec2c86efa440b00d042a27383b">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_f2491421a2590993f3b7f16201be8ca4c984ad25.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.1.1\support-annotations-25.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\support-annotations-25.1.1_fe7b656a4398545a9517e5990a0748e8eb0896ab.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\lenovo\.android\build-cache\372d5ed3bb5c916d45b450a1cf9715b18723a6c8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cd7951e04cfb9a8bf008d544a478d9a8d8192d38">
+        <dex dex="D:\Udacity\Virtua Stock\app\build\intermediates\pre-dexed\release\classes_7553b6d151847aac4e09906adf02b3d3ee5e1feb.jar" />
+    </item>
+
+</items>

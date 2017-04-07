@@ -56,7 +56,7 @@ public class PortfolioFragment extends Fragment {
 // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static PortfolioFragment newInstance(int columnCount) {
-        if(fragment==null) {
+        if (fragment == null) {
             fragment = new PortfolioFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_COLUMN_COUNT, columnCount);
@@ -80,9 +80,8 @@ public class PortfolioFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_portfolio_list, container, false);
         List<Stocks> stocksList;
         try {
-           stocksList = Dashboard.user.getStocks();
-        }catch (Exception e)
-        {
+            stocksList = Dashboard.user.getStocks();
+        } catch (Exception e) {
             stocksList = new ArrayList<>();
         }
         // Set the adapter

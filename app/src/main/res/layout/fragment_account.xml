@@ -18,8 +18,7 @@
                 android:layout_width="match_parent"
                 android:contentDescription="@string/cd_profile_pic"
                 android:layout_height="250dp"
-                android:scaleType="centerCrop"
-                />
+                android:scaleType="centerCrop" />
 
             <ImageButton
                 android:id="@+id/user_profile_photo"
@@ -66,7 +65,7 @@
                     android:textColor="#fff"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:hint="@string/set_username"/>
+                    android:hint="@string/set_username" />
 
             </RelativeLayout>
 

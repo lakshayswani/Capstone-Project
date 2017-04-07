@@ -28,8 +28,7 @@
             android:textSize="15sp"
             android:contentDescription="@string/cd_stock_price"
             android:textColor="@color/cardview_light_background"
-            android:layout_toRightOf="@+id/stock_name_cover"
-            />
+            android:layout_toRightOf="@+id/stock_name_cover" />
 
     </RelativeLayout>
 

@@ -144,17 +144,23 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
         final String uid = currentUser.getUid();
         final String emailId = currentUser.getEmail();
 
+        user = new User();
+        user.setUid(uid);
+        user.setEmailId(emailId);
+        user.setBalance("10000");
+        user.setStocks(new ArrayList<Stocks>());
         database.child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                user = dataSnapshot.getValue(User.class);
-                if (user == null) {
-                    user = new User();
-                    user.setUid(uid);
-                    user.setEmailId(emailId);
-                    user.setBalance("10000");
+                User user1 = dataSnapshot.getValue(User.class);
+                if (user1 == null) {
+//                    user = new User();
+//                    user.setUid(uid);
+//                    user.setEmailId(emailId);
+//                    user.setBalance("10000");
                     database.child(uid).setValue(user);
                 } else {
+                    user = user1;
                     ArrayList<Stocks> stocks = new ArrayList<Stocks>();
                     for (DataSnapshot data : dataSnapshot.child("stocks").getChildren()) {
                         stocks.add(data.getValue(Stocks.class));
@@ -240,8 +246,7 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
      *
      * @param uri the uri
      */
-    public static void updateProfilePic(Uri uri)
-    {
+    public static void updateProfilePic(Uri uri) {
         storageReference.child(user.getUid()).putFile(uri);
     }
 }

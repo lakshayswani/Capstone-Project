@@ -50,6 +50,9 @@
     <string name="add_new_stock" translatable="true">Add a new Stock</string>
     <string name="add_new_stock_detail" translatable="true">Please input a Stock Symbol</string>
     <string name="invalid_stock" translatable="true">Invalid Stock Symbol</string>
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
+    <string name="submit">Submit</string>
 
     <!--Client ID for Google Authorization-->
     <string name="web_client_id">1087422679076-rsame41m3vaf9p2ppd2kljfopqdm0qs4.apps.googleusercontent.com</string>

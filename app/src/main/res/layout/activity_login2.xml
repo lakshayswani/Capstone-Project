@@ -30,7 +30,7 @@
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/prompt_email"
                 android:contentDescription="@string/cd_email"
                 android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>

@@ -6,9 +6,9 @@ android {
     signingConfigs {
         config {
             keyAlias 'SigningCertificate'
-            keyPassword 'yamaha@R15'
-            storeFile file('D:/android/Virtua-Stock/SigningCertificate.jks')
-            storePassword 'yamaha@R15'
+            keyPassword 'yamahar15'
+            storeFile file("$rootDir/SigningCertificate.jks")
+            storePassword 'yamahar15'
         }
     }
     compileSdkVersion 25

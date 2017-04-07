@@ -83,7 +83,7 @@ public class StocksFragment extends Fragment implements LoaderManager.LoaderCall
 // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static StocksFragment newInstance(int columnCount) {
-        if(fragment==null) {
+        if (fragment == null) {
             fragment = new StocksFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_COLUMN_COUNT, columnCount);
@@ -122,31 +122,31 @@ public class StocksFragment extends Fragment implements LoaderManager.LoaderCall
             }
         }
         // Set the adapter
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.stocks_list);
+        Context context = view.getContext();
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.stocks_list);
 
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
+        if (mColumnCount <= 1) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        } else {
+            recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+        }
 
-            getLoaderManager().initLoader(CURSOR_LOADER_ID, null, this);
+        getLoaderManager().initLoader(CURSOR_LOADER_ID, null, this);
 
-            mCursorAdapter = new QuoteCursorAdapter(getActivity(), null);
-            recyclerView.addOnItemTouchListener(new RecyclerViewItemClickListener(getActivity(),
-                    new RecyclerViewItemClickListener.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(View v, int position) {
-                            //TODO:
-                            // do something on item click
+        mCursorAdapter = new QuoteCursorAdapter(getActivity(), null);
+        recyclerView.addOnItemTouchListener(new RecyclerViewItemClickListener(getActivity(),
+                new RecyclerViewItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View v, int position) {
+                        //TODO:
+                        // do something on item click
 //                            Intent chartIntent = new Intent(mContext, MyStockDetailActivity.class);
 //                            mCursor.moveToPosition(position);
 //                            chartIntent.putExtra(getResources().getString(R.string.string_symbol), mCursor.getString(mCursor.getColumnIndex(getResources().getString(R.string.string_symbol))));
 //                            mContext.startActivity(chartIntent);
-                        }
-                    }));
-            recyclerView.setAdapter(mCursorAdapter);
+                    }
+                }));
+        recyclerView.setAdapter(mCursorAdapter);
 
         if (isConnected) {
             long period = 3600L;

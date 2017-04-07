@@ -1,7 +1,9 @@
 package com.lakshayswani.virtuastock.util;
 
 import android.util.Log;
+
 import org.json.JSONObject;
+
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
@@ -23,13 +25,12 @@ public class StockPrice {
         String url = "http://finance.google.com/finance/info?client=ig&q=" + s;
         try {
             response = getResponse(url);
-            response = response.substring(9, response.length()-2);
+            response = response.substring(9, response.length() - 2);
             JSON = new JSONObject(response);
-        }catch (Exception e)
-        {
-            Log.e("Stock Details","Invalid Stock Name");
+        } catch (Exception e) {
+            Log.e("Stock Details", "Invalid Stock Name");
         }
-            return JSON;
+        return JSON;
     }
 
     /**
