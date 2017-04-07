@@ -9,9 +9,14 @@ import java.net.URLConnection;
 /**
  * Created by lakshay.swani on 3/29/2017.
  */
-
 public class StockPrice {
 
+    /**
+     * Gets stock details from google.
+     *
+     * @param s the s
+     * @return the stock details from google
+     */
     public JSONObject getStockDetailsFromGoogle(String s) {
         String response = null;
         JSONObject JSON = null;
@@ -27,6 +32,12 @@ public class StockPrice {
             return JSON;
     }
 
+    /**
+     * Gets response.
+     *
+     * @param url the url
+     * @return the response
+     */
     public String getResponse(String url) {
         String result = null;
         int c;

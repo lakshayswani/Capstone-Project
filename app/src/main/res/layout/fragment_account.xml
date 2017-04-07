@@ -16,6 +16,7 @@
             <ImageView
                 android:id="@+id/header_cover_image"
                 android:layout_width="match_parent"
+                android:contentDescription="@string/cd_profile_pic"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"
                 />
@@ -29,6 +30,7 @@
                 android:layout_marginTop="-30dp"
                 android:elevation="5dp"
                 android:padding="5dp"
+                android:contentDescription="@string/cd_profile_pic_add"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_account_box_black_24dp" />
 
@@ -49,6 +51,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
+                    android:contentDescription="@string/cd_logout"
                     android:src="@drawable/ic_exit_to_app_black_24dp" />
 
                 <EditText
@@ -59,10 +62,11 @@
                     android:layout_marginTop="76dp"
                     android:gravity="center"
                     android:textAlignment="center"
+                    android:contentDescription="@string/cd_username"
                     android:textColor="#fff"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    android:hint="Set Username"/>
+                    android:hint="@string/set_username"/>
 
             </RelativeLayout>
 
@@ -82,8 +86,9 @@
                     android:background="#fff"
                     android:clickable="true"
                     android:elevation="4dp"
+                    android:contentDescription="@string/cd_new_password"
                     android:padding="20dp"
-                    android:hint="New Password" />
+                    android:hint="@string/new_password" />
 
                 <EditText
                     android:id="@+id/newPasswordConfirm"
@@ -92,23 +97,25 @@
                     android:layout_margin="5dp"
                     android:layout_marginBottom="3dp"
                     android:layout_marginTop="3dp"
+                    android:contentDescription="@string/cd_new_password_confirm"
                     android:background="#fff"
                     android:clickable="true"
                     android:elevation="4dp"
                     android:padding="20dp"
-                    android:hint="Confirm New Password" />
+                    android:hint="@string/confirm_new_password" />
 
                 <Button
                     android:id="@+id/submitUpdates"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:contentDescription="@string/cd_update"
                     android:background="#fff"
                     android:clickable="true"
                     android:elevation="4dp"
                     android:padding="20dp"
                     android:layout_gravity="center"
-                    android:text="Submit Updates" />
+                    android:text="@string/submit_updates" />
 
             </LinearLayout>
         </RelativeLayout>

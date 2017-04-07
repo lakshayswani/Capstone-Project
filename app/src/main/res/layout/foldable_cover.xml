@@ -14,6 +14,7 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:contentDescription="@string/cd_stock_name"
             android:textColor="@color/colorAccent"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -25,6 +26,7 @@
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="15sp"
+            android:contentDescription="@string/cd_stock_price"
             android:textColor="@color/cardview_light_background"
             android:layout_toRightOf="@+id/stock_name_cover"
             />

@@ -13,13 +13,19 @@ import com.lakshayswani.virtuastock.ui.Dashboard;
 /**
  * Created by lenovo on 20-12-2016.
  */
-
 public class MyStocksActivityWidget extends AppWidgetProvider {
 
+    /**
+     * Update app widget.
+     *
+     * @param context          the context
+     * @param appWidgetManager the app widget manager
+     * @param appWidgetId      the app widget id
+     */
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,int appWidgetId) {
 
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
-        views.setTextViewText(R.id.widget_balance, "Stocks");
+        views.setTextViewText(R.id.widget_balance, context.getResources().getString(R.string.app_name));
         views.setRemoteAdapter(R.id.widget_stock_list, new Intent(context, WidgetRemoteViewsFactory.class));
 
         Intent appIntent = new Intent(context, Dashboard.class);

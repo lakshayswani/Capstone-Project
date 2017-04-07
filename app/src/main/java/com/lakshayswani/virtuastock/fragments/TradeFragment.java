@@ -46,6 +46,9 @@ import worldline.com.foldablelayout.FoldableLayout;
  */
 public class TradeFragment extends Fragment {
 
+    /**
+     * The Fragment.
+     */
     static TradeFragment fragment;
 
     private static final String ARG_PARAM1 = "param1";
@@ -91,6 +94,9 @@ public class TradeFragment extends Fragment {
 
     private WebView stock_detail;
 
+    /**
+     * Instantiates a new Trade fragment.
+     */
     public TradeFragment() {
         // Required empty public constructor
     }
@@ -103,7 +109,7 @@ public class TradeFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment TradeFragment.
      */
-    // TODO: Rename and change types and number of parameters
+// TODO: Rename and change types and number of parameters
     public static TradeFragment newInstance(String param1, String param2) {
         if (fragment == null) {
             fragment = new TradeFragment();
@@ -200,7 +206,7 @@ public class TradeFragment extends Fragment {
                         if (Dashboard.user.checkSell(stock.getStockName(), Integer.parseInt(stock.getQuantity()))) {
                             proceedTransaction(stock);
                         } else {
-                            Toast.makeText(getActivity(), "OOPS! You don't seem to have these many stocks to sell.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), getResources().getString(R.string.t_invalid_quantity), Toast.LENGTH_LONG).show();
                         }
                     } else {
                         proceedTransaction(stock);
@@ -297,6 +303,11 @@ public class TradeFragment extends Fragment {
         return view;
     }
 
+    /**
+     * On button pressed.
+     *
+     * @param uri the uri
+     */
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -402,7 +413,12 @@ public class TradeFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+        /**
+         * On fragment interaction.
+         *
+         * @param uri the uri
+         */
+// TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 

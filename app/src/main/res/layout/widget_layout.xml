@@ -15,6 +15,7 @@
         android:background="@color/colorPrimary"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
+        android:contentDescription="@string/cd_app_name"
         android:textStyle="bold|italic" />
 
     <ListView

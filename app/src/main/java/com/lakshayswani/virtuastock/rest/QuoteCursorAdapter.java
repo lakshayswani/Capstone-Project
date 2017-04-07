@@ -18,13 +18,23 @@ import com.lakshayswani.virtuastock.data.QuoteProvider;
 import com.lakshayswani.virtuastock.touch_helper.ItemTouchHelperAdapter;
 import com.lakshayswani.virtuastock.touch_helper.ItemTouchHelperViewHolder;
 
+/**
+ * The type Quote cursor adapter.
+ */
 public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAdapter.ViewHolder>
     implements ItemTouchHelperAdapter{
 
   private static Context mContext;
   private static Typeface robotoLight;
   private boolean isPercent;
-  public QuoteCursorAdapter(Context context, Cursor cursor){
+
+    /**
+     * Instantiates a new Quote cursor adapter.
+     *
+     * @param context the context
+     * @param cursor  the cursor
+     */
+    public QuoteCursorAdapter(Context context, Cursor cursor){
     super(context, cursor);
     mContext = context;
   }
@@ -79,12 +89,30 @@ public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAda
     return super.getItemCount();
   }
 
-  public static class ViewHolder extends RecyclerView.ViewHolder
+    /**
+     * The type View holder.
+     */
+    public static class ViewHolder extends RecyclerView.ViewHolder
       implements ItemTouchHelperViewHolder, View.OnClickListener{
-    public final TextView symbol;
-    public final TextView bidPrice;
-    public final TextView change;
-    public ViewHolder(View itemView){
+        /**
+         * The Symbol.
+         */
+        public final TextView symbol;
+        /**
+         * The Bid price.
+         */
+        public final TextView bidPrice;
+        /**
+         * The Change.
+         */
+        public final TextView change;
+
+        /**
+         * Instantiates a new View holder.
+         *
+         * @param itemView the item view
+         */
+        public ViewHolder(View itemView){
       super(itemView);
       symbol = (TextView) itemView.findViewById(R.id.stock_symbol);
       symbol.setTypeface(robotoLight);
@@ -104,7 +132,7 @@ public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAda
 
     @Override
     public void onClick(View v) {
-      Toast.makeText(mContext,"Helloooo",Toast.LENGTH_LONG).show();
+      Toast.makeText(mContext,"",Toast.LENGTH_LONG).show();
     }
   }
 }

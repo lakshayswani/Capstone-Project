@@ -3,27 +3,55 @@
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_dashboard">dashboard</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="portfolio">Portfolio</string>
-    <string name="account">Account</string>
-    <string name="trade">Trade</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_dashboard" translatable="true">dashboard</string>
+    <string name="title_home" translatable="true">Home</string>
+    <string name="title_dashboard" translatable="true">Dashboard</string>
+    <string name="title_notifications" translatable="true">Notifications</string>
+    <string name="portfolio" translatable="true">Portfolio</string>
+    <string name="account" translatable="true">Account</string>
+    <string name="trade" translatable="true">Trade</string>
+    <string name="title_activity_login"> translatable="true"Sign in</string>
+    <string name="upload_pic" translatable="true">Upload picture</string>
+    <string name="upload_option" translatable="true">Select option to upload from.</string>
+    <string name="gallary" translatable="true">Gallery</string>
+    <string name="return_data" translatable="true">return_data</string>
+    <string name="Camera" translatable="true">Camera</string>
+    <string name="title" translatable="true">Title</string>
+    <string name="profilePic" translatable="true">ProfilePic</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+    <string name="prompt_email" translatable="true">Email</string>
+    <string name="prompt_password" translatable="true">Password (optional)</string>
+    <string name="login" translatable="true">Login</string>
+    <string name="password" translatable="true">Password</string>
+    <string name="action_sign_in" translatable="true">Sign in or register</string>
+    <string name="action_sign_in_short" translatable="true">Sign in</string>
+    <string name="error_invalid_email" translatable="true">This email address is invalid</string>
+    <string name="error_invalid_password" translatable="true">This password is too short</string>
+    <string name="error_incorrect_password" translatable="true">This password is incorrect</string>
+    <string name="error_field_required" translatable="true">This field is required</string>
+    <string name="permission_rationale" translatable="true">Contacts permissions are needed for providing email completions.</string>
+    <string name="signup_here" translatable="true">No account yet? Create one</string>
+    <string name="login_here" translatable="true">Already a member? Login</string>
+    <string name="create_account" translatable="true">Create Account</string>
+    <string name="name" translatable="true">Name</string>
+
+    <!--Strings related to account-->
+    <string name="submit_updates" translatable="true">Submit Updates</string>
+    <string name="confirm_new_password" translatable="true">Confirm New Password</string>
+    <string name="new_password" translatable="true">New Password</string>
+    <string name="set_username" translatable="true">Set Username</string>
+    <string name="enter_stock" translatable="true">Enter the stock name</string>
+    <string name="set_price" translatable="true">Set Price</string>
+    <string name="set_quantity" translatable="true">Set Quantity</string>
+    <string name="zero" translatable="false">0</string>
+    <string name="close" translatable="true">Close</string>
+    <string name="data" translatable="true">data</string>
+    <string name="add_new_stock" translatable="true">Add a new Stock</string>
+    <string name="add_new_stock_detail" translatable="true">Please input a Stock Symbol</string>
+    <string name="invalid_stock" translatable="true">Invalid Stock Symbol</string>
+
+    <!--Client ID for Google Authorization-->
     <string name="web_client_id">1087422679076-rsame41m3vaf9p2ppd2kljfopqdm0qs4.apps.googleusercontent.com</string>
 
     <!-- Strings related to Stocks-->
@@ -37,6 +65,55 @@
     <string name="loaderIsCurrent" translatable="false"> = ?</string>
     <string name="string_tag" translatable="false">tag</string>
     <string name="string_init" translatable="false">init</string>
+
+
+    <!--Strings related to UI-->
+    <string name="cd_bottom_navigation" translatable="true">Bottom Navigation View</string>
+    <string name="cd_logo" translatable="true">Application Logo</string>
+    <string name="cd_email" translatable="true">Login Email ID</string>
+    <string name="cd_password" translatable="true">Login Password</string>
+    <string name="cd_login" translatable="true">Login</string>
+    <string name="cd_signup" translatable="true">Sign Up Account</string>
+    <string name="cd_login_google" translatable="true">Login through Google</string>
+    <string name="cd_name" translatable="true">Login Name</string>
+    <string name="cd_stock_name" translatable="true">Name of the Stock</string>
+    <string name="cd_stock_price" translatable="true">Price of the Stock</string>
+    <string name="cd_stock_web" translatable="true">Yahoo Web Page of Stock</string>
+    <string name="cd_close" translatable="true">Close the web Page</string>
+    <string name="cd_profile_pic" translatable="true">Profile Picture of the user</string>
+    <string name="cd_profile_pic_add" translatable="true">Add or update profile pic of User</string>
+    <string name="cd_username" translatable="true">Set or update username</string>
+    <string name="cd_new_password" translatable="true">New Password</string>
+    <string name="cd_new_password_confirm" translatable="true">Confirm New Password</string>
+    <string name="cd_update" translatable="true">Update Profile</string>
+    <string name="cd_logout" translatable="true">Logout from Account</string>
+    <string name="cd_stock_details" translatable="true">Stock Details</string>
+    <string name="cd_stock_add" translatable="true">Add a new Stock to be viewed</string>
+    <string name="cd_search_stock" translatable="true">Search for a Stock</string>
+    <string name="cd_trade_price" translatable="true">Set Price for Stock</string>
+    <string name="cd_trade_quantity" translatable="true">Set quantity of a Stock</string>
+    <string name="cd_trade" translatable="true">Complete Trade</string>
+    <string name="cd_app_name" translatable="true">VirtuaStock</string>
+
+    <!--Strings Related to Toast-->
+    <string name="t_cancel" translatable="true">Cancelled</string>
+    <string name="t_nothing_to_retrieve" translatable="true">No extras to retrieve!</string>
+    <string name="t_logout_msg" translatable="true">Are you sure you want to log out?</string>
+    <string name="t_logout" translatable="true">LOGOUT</string>
+    <string name="t_profile_updated" translatable="true">Profile updated successfully</string>
+    <string name="t_passwords_not_match" translatable="true">The passwords do not match</string>
+    <string name="t_yes" translatable="true">Yes</string>
+    <string name="t_no" translatable="true">No</string>
+    <string name="t_logging" translatable="true">Logging in...</string>
+    <string name="t_login_error" translatable="true">Invalid Login Details</string>
+    <string name="t_auth_failed" translatable="true">Authentication Failed</string>
+    <string name="t_valid_email" translatable="true">Enter a valid email address</string>
+    <string name="t_valid_password" translatable="true">Between 4 and 10 alphanumeric characters</string>
+    <string name="t_valid_name" translatable="true">At least 3 characters</string>
+    <string name="t_signup_error" translatable="true">Unable to make user with these details.</string>
+    <string name="t_invalid_quantity" translatable="true">OOPS! You don\'t seem to have these many stocks to sell.</string>
+    <string name="t_no_connection" translatable="true">No Internet Connection</string>
+    <string name="t_welcome" translatable="true">Welcome </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -13,12 +13,14 @@
             android:textColor="@color/colorPrimary"
             android:gravity="center"
             android:id="@+id/portfolio_stock_name"
+            android:contentDescription="@string/cd_stock_name"
             android:layout_width="100dp"
             android:layout_height="match_parent" />
 
         <TextView
             android:layout_toRightOf="@+id/portfolio_stock_name"
             android:gravity="center"
+            android:contentDescription="@string/cd_stock_price"
             android:id="@+id/portfolio_stock_profit"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

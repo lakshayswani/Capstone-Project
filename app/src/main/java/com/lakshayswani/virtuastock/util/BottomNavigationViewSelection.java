@@ -11,27 +11,53 @@ import android.support.design.widget.BottomNavigationView;
 import android.util.AttributeSet;
 import android.view.MenuItem;
 
+/**
+ * The type Bottom navigation view selection.
+ */
 public class BottomNavigationViewSelection extends BottomNavigationView {
 
     private ItemSelectedListener listener;
     private ItemIndexSelectedListener listenerByIndex;
     private int currentItem = 0;
 
+    /**
+     * Instantiates a new Bottom navigation view selection.
+     *
+     * @param context the context
+     */
     public BottomNavigationViewSelection(Context context) {
         super(context);
         init();
     }
 
+    /**
+     * Instantiates a new Bottom navigation view selection.
+     *
+     * @param context the context
+     * @param attrs   the attrs
+     */
     public BottomNavigationViewSelection(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
+    /**
+     * Instantiates a new Bottom navigation view selection.
+     *
+     * @param context      the context
+     * @param attrs        the attrs
+     * @param defStyleAttr the def style attr
+     */
     public BottomNavigationViewSelection(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
+    /**
+     * Sets current item.
+     *
+     * @param itemIndex the item index
+     */
     public void setCurrentItem(int itemIndex) {
         final boolean wasChecked = checkItem(itemIndex);
         if (listener != null) {
@@ -41,18 +67,39 @@ public class BottomNavigationViewSelection extends BottomNavigationView {
         }
     }
 
+    /**
+     * Gets current item.
+     *
+     * @return the current item
+     */
     public int getCurrentItem() {
         return currentItem;
     }
 
+    /**
+     * Gets item.
+     *
+     * @param itemIndex the item index
+     * @return the item
+     */
     public MenuItem getItem(int itemIndex) {
         return getMenu().getItem(itemIndex);
     }
 
+    /**
+     * Sets item selected listener.
+     *
+     * @param listener the listener
+     */
     public void setItemSelectedListener(@Nullable ItemSelectedListener listener) {
         this.listener = listener;
     }
 
+    /**
+     * Sets item selected listener.
+     *
+     * @param listener the listener
+     */
     public void setItemSelectedListener(@Nullable ItemIndexSelectedListener listener) {
         this.listenerByIndex = listener;
     }
@@ -100,6 +147,9 @@ public class BottomNavigationViewSelection extends BottomNavigationView {
         return -1;
     }
 
+    /**
+     * The interface Item selected listener.
+     */
     public interface ItemSelectedListener {
         /**
          * Called when an item in the bottom navigation menu is selected.
@@ -111,6 +161,9 @@ public class BottomNavigationViewSelection extends BottomNavigationView {
         boolean onItemSelected(@NonNull MenuItem item, boolean wasSelected);
     }
 
+    /**
+     * The interface Item index selected listener.
+     */
     public interface ItemIndexSelectedListener {
         /**
          * Called when an item in the bottom navigation menu is selected.

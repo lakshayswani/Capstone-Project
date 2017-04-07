@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity implements
                 ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                         R.style.Theme_AppCompat_DayNight_Dialog);
                 progressDialog.setIndeterminate(true);
-                progressDialog.setMessage("Logging in...");
+                progressDialog.setMessage(getResources().getString(R.string.t_logging));
                 progressDialog.show();
                 signInFirebase(email.getText().toString(), password.getText().toString(), progressDialog);
             }
@@ -126,7 +126,7 @@ public class LoginActivity extends AppCompatActivity implements
                 progressDialog = new ProgressDialog(LoginActivity.this,
                         R.style.Theme_AppCompat_DayNight_Dialog);
                 progressDialog.setIndeterminate(true);
-                progressDialog.setMessage("Logging in...");
+                progressDialog.setMessage(getResources().getString(R.string.t_logging));
                 progressDialog.show();
                 signIn();
             }
@@ -161,7 +161,7 @@ public class LoginActivity extends AppCompatActivity implements
                         Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(getApplicationContext(), "Invalid Login Details",
+                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.t_login_error),
                                     Toast.LENGTH_SHORT).show();
                         }
                         progressDialog.hide();
@@ -199,7 +199,7 @@ public class LoginActivity extends AppCompatActivity implements
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
             } else {
-                Toast.makeText(getApplicationContext(), "Authentication Failed",
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.t_auth_failed),
                         Toast.LENGTH_SHORT).show();
                 progressDialog.hide();
             }
@@ -219,8 +219,6 @@ public class LoginActivity extends AppCompatActivity implements
                         Log.d(TAG, "signInWithCredential:onComplete:" + task.isSuccessful());
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithCredential", task.getException());
-                            Toast.makeText(getApplicationContext(), "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
                         } else {
                             googleDisplayName = acct.getGivenName();
                         }
@@ -269,6 +267,11 @@ public class LoginActivity extends AppCompatActivity implements
         return false;
     }
 
+    /**
+     * Validate boolean.
+     *
+     * @return the boolean
+     */
     public boolean validate() {
         boolean valid = true;
 
@@ -276,14 +279,14 @@ public class LoginActivity extends AppCompatActivity implements
         String passwordText = password.getText().toString();
 
         if (emailText.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
-            email.setError("enter a valid email address");
+            email.setError(getResources().getString(R.string.t_valid_email));
             valid = false;
         } else {
             email.setError(null);
         }
 
         if (passwordText.isEmpty() || passwordText.length() < 4 || passwordText.length() > 10) {
-            password.setError("between 4 and 10 alphanumeric characters");
+            password.setError(getResources().getString(R.string.t_valid_password));
             valid = false;
         } else {
             password.setError(null);

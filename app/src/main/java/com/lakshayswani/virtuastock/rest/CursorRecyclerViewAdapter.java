@@ -7,9 +7,11 @@ import android.support.v7.widget.RecyclerView;
 
 /**
  * Created by sam_chordas on 10/6/15.
- *  Credit to skyfishjy gist:
- *    https://gist.github.com/skyfishjy/443b7448f59be978bc59
+ * Credit to skyfishjy gist:
+ * https://gist.github.com/skyfishjy/443b7448f59be978bc59
  * for the CursorRecyclerViewApater.java code and idea.
+ *
+ * @param <VH> the type parameter
  */
 public abstract class CursorRecyclerViewAdapter <VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH>{
   private static final String LOG_TAG = CursorRecyclerViewAdapter.class.getSimpleName();
@@ -17,7 +19,14 @@ public abstract class CursorRecyclerViewAdapter <VH extends RecyclerView.ViewHol
   private boolean dataIsValid;
   private int rowIdColumn;
   private DataSetObserver mDataSetObserver;
-  public CursorRecyclerViewAdapter(Context context, Cursor cursor){
+
+    /**
+     * Instantiates a new Cursor recycler view adapter.
+     *
+     * @param context the context
+     * @param cursor  the cursor
+     */
+    public CursorRecyclerViewAdapter(Context context, Cursor cursor){
     mCursor = cursor;
     dataIsValid = cursor != null;
     rowIdColumn = dataIsValid ? mCursor.getColumnIndex("_id") : -1;
@@ -27,7 +36,12 @@ public abstract class CursorRecyclerViewAdapter <VH extends RecyclerView.ViewHol
     }
   }
 
-  public Cursor getCursor(){
+    /**
+     * Get cursor cursor.
+     *
+     * @return the cursor
+     */
+    public Cursor getCursor(){
     return mCursor;
   }
 
@@ -50,7 +64,13 @@ public abstract class CursorRecyclerViewAdapter <VH extends RecyclerView.ViewHol
     super.setHasStableIds(true);
   }
 
-  public abstract void onBindViewHolder(VH viewHolder, Cursor cursor);
+    /**
+     * On bind view holder.
+     *
+     * @param viewHolder the view holder
+     * @param cursor     the cursor
+     */
+    public abstract void onBindViewHolder(VH viewHolder, Cursor cursor);
 
   @Override
   public void onBindViewHolder(VH viewHolder, int position) {
@@ -64,7 +84,13 @@ public abstract class CursorRecyclerViewAdapter <VH extends RecyclerView.ViewHol
     onBindViewHolder(viewHolder, mCursor);
   }
 
-  public Cursor swapCursor(Cursor newCursor){
+    /**
+     * Swap cursor cursor.
+     *
+     * @param newCursor the new cursor
+     * @return the cursor
+     */
+    public Cursor swapCursor(Cursor newCursor){
     if (newCursor == mCursor){
       return null;
     }

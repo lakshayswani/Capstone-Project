@@ -29,6 +29,9 @@ import java.util.List;
  */
 public class PortfolioFragment extends Fragment {
 
+    /**
+     * The Fragment.
+     */
     static PortfolioFragment fragment;
 
     // TODO: Customize parameter argument names
@@ -44,7 +47,13 @@ public class PortfolioFragment extends Fragment {
     public PortfolioFragment() {
     }
 
-    // TODO: Customize parameter initialization
+    /**
+     * New instance portfolio fragment.
+     *
+     * @param columnCount the column count
+     * @return the portfolio fragment
+     */
+// TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static PortfolioFragment newInstance(int columnCount) {
         if(fragment==null) {
@@ -119,7 +128,12 @@ public class PortfolioFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
+        /**
+         * On list fragment interaction.
+         *
+         * @param item the item
+         */
+// TODO: Update argument type and name
         void onListFragmentInteraction(DummyItem item);
     }
 

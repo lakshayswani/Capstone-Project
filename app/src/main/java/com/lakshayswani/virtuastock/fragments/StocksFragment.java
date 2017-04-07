@@ -46,6 +46,9 @@ import com.melnykov.fab.FloatingActionButton;
  */
 public class StocksFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    /**
+     * The Fragment.
+     */
     static StocksFragment fragment;
 
     // TODO: Customize parameter argument names
@@ -71,7 +74,13 @@ public class StocksFragment extends Fragment implements LoaderManager.LoaderCall
     public StocksFragment() {
     }
 
-    // TODO: Customize parameter initialization
+    /**
+     * New instance stocks fragment.
+     *
+     * @param columnCount the column count
+     * @return the stocks fragment
+     */
+// TODO: Customize parameter initialization
     @SuppressWarnings("unused")
     public static StocksFragment newInstance(int columnCount) {
         if(fragment==null) {
@@ -109,7 +118,7 @@ public class StocksFragment extends Fragment implements LoaderManager.LoaderCall
             if (isConnected) {
                 getActivity().startService(mServiceIntent);
             } else {
-                Toast.makeText(getActivity().getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.t_no_connection), Toast.LENGTH_SHORT).show();
             }
         }
         // Set the adapter
@@ -161,8 +170,8 @@ public class StocksFragment extends Fragment implements LoaderManager.LoaderCall
             @Override
             public void onClick(View v) {
                 if (isConnected) {
-                    new MaterialDialog.Builder(getActivity()).title("Add new stock")
-                            .content("Please input a Stock Symbol")
+                    new MaterialDialog.Builder(getActivity()).title(getResources().getString(R.string.add_new_stock))
+                            .content(getResources().getString(R.string.add_new_stock_detail))
                             .inputType(InputType.TYPE_CLASS_TEXT)
                             .input("FB", "", new MaterialDialog.InputCallback() {
                                 @Override
@@ -226,7 +235,12 @@ public class StocksFragment extends Fragment implements LoaderManager.LoaderCall
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
+        /**
+         * On list fragment interaction.
+         *
+         * @param item the item
+         */
+// TODO: Update argument type and name
         void onListFragmentInteraction(DummyItem item);
     }
 

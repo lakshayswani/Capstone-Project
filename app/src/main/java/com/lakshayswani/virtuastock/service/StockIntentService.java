@@ -11,11 +11,19 @@ import com.google.android.gms.gcm.TaskParams;
  */
 public class StockIntentService extends IntentService {
 
-  public StockIntentService(){
+    /**
+     * Instantiates a new Stock intent service.
+     */
+    public StockIntentService(){
     super(StockIntentService.class.getName());
   }
 
-  public StockIntentService(String name) {
+    /**
+     * Instantiates a new Stock intent service.
+     *
+     * @param name the name
+     */
+    public StockIntentService(String name) {
     super(name);
   }
 

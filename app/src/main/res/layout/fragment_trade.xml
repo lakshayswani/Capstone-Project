@@ -21,7 +21,8 @@
             android:layout_gravity="center_horizontal"
             android:singleLine="true"
             android:ems="10"
-            android:hint="Enter the stock name"
+            android:contentDescription="@string/cd_search_stock"
+            android:hint="@string/enter_stock"
             android:padding="10dp" />
 
         <worldline.com.foldablelayout.FoldableLayout
@@ -48,7 +49,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="Set Price"
+                    android:contentDescription="@string/cd_trade_price"
+                    android:text="@string/set_price"
                     android:textSize="10sp" />
 
                 <LinearLayout
@@ -64,6 +66,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:gravity="center"
+                        android:contentDescription="@string/cd_trade_price"
                         android:padding="10dp"
                         app:sl_maxValue="100"
                         app:sl_minValue="0"
@@ -73,7 +76,8 @@
                         android:id="@+id/stock_trade_price_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="0"
+                        android:text="@string/zero"
+                        android:contentDescription="@string/cd_trade_price"
                         android:layout_weight="8"
                         android:inputType="numberDecimal" />
 
@@ -84,7 +88,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:text="Set Quantity"
+                    android:text="@string/set_quantity"
+                    android:contentDescription="@string/cd_trade_quantity"
                     android:textSize="10sp" />
 
                 <LinearLayout
@@ -100,6 +105,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:gravity="center"
+                        android:contentDescription="@string/cd_trade_price"
                         android:padding="10dp"
                         app:sl_maxValue="100"
                         app:sl_minValue="0"
@@ -110,7 +116,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="8"
-                        android:text="0"
+                        android:text="@string/zero"
+                        android:contentDescription="@string/cd_trade_price"
                         android:inputType="number" />
 
                 </LinearLayout>
@@ -131,11 +138,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Buy"
+                android:contentDescription="@string/cd_trade"
                 android:textSize="20sp" />
 
             <com.rey.material.widget.Switch
                 android:id="@+id/stock_trade"
                 style="@style/Material.Widget.Switch"
+                android:contentDescription="@string/cd_trade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
@@ -146,6 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sell"
+                android:contentDescription="@string/cd_trade"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -157,6 +167,7 @@
             android:layout_gravity="center_horizontal"
             android:padding="10dp"
             android:text="Submit"
+            android:contentDescription="@string/cd_trade"
             android:textSize="15sp" />
 
     </LinearLayout>

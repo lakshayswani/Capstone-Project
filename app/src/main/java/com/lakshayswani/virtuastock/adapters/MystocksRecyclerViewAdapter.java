@@ -22,6 +22,12 @@ public class MystocksRecyclerViewAdapter extends RecyclerView.Adapter<MystocksRe
     private final List<DummyItem> mValues;
     private final OnListFragmentInteractionListener mListener;
 
+    /**
+     * Instantiates a new Mystocks recycler view adapter.
+     *
+     * @param items    the items
+     * @param listener the listener
+     */
     public MystocksRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
@@ -57,12 +63,32 @@ public class MystocksRecyclerViewAdapter extends RecyclerView.Adapter<MystocksRe
         return mValues.size();
     }
 
+    /**
+     * The type View holder.
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
+        /**
+         * The M view.
+         */
         public final View mView;
+        /**
+         * The M id view.
+         */
         public final TextView mIdView;
+        /**
+         * The M content view.
+         */
         public final TextView mContentView;
+        /**
+         * The M item.
+         */
         public DummyItem mItem;
 
+        /**
+         * Instantiates a new View holder.
+         *
+         * @param view the view
+         */
         public ViewHolder(View view) {
             super(view);
             mView = view;

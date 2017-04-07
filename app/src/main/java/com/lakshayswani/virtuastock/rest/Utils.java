@@ -17,9 +17,18 @@ public class Utils {
 
   private static String LOG_TAG = Utils.class.getSimpleName();
 
-  public static boolean showPercent = true;
+    /**
+     * The constant showPercent.
+     */
+    public static boolean showPercent = true;
 
-  public static ArrayList quoteJsonToContentVals(String JSON){
+    /**
+     * Quote json to content vals array list.
+     *
+     * @param JSON the json
+     * @return the array list
+     */
+    public static ArrayList quoteJsonToContentVals(String JSON){
     ArrayList<ContentProviderOperation> batchOperations = new ArrayList<>();
     JSONObject jsonObject = null;
     JSONArray resultsArray = null;
@@ -49,12 +58,25 @@ public class Utils {
     return batchOperations;
   }
 
-  public static String truncateBidPrice(String bidPrice){
+    /**
+     * Truncate bid price string.
+     *
+     * @param bidPrice the bid price
+     * @return the string
+     */
+    public static String truncateBidPrice(String bidPrice){
     bidPrice = String.format("%.2f", Float.parseFloat(bidPrice));
     return bidPrice;
   }
 
-  public static String truncateChange(String change, boolean isPercentChange){
+    /**
+     * Truncate change string.
+     *
+     * @param change          the change
+     * @param isPercentChange the is percent change
+     * @return the string
+     */
+    public static String truncateChange(String change, boolean isPercentChange){
     String weight = change.substring(0,1);
     String ampersand = "";
     if (isPercentChange){
@@ -71,7 +93,13 @@ public class Utils {
     return change;
   }
 
-  public static ContentProviderOperation buildBatchOperation(JSONObject jsonObject){
+    /**
+     * Build batch operation content provider operation.
+     *
+     * @param jsonObject the json object
+     * @return the content provider operation
+     */
+    public static ContentProviderOperation buildBatchOperation(JSONObject jsonObject){
     ContentProviderOperation.Builder builder = ContentProviderOperation.newInsert(
         QuoteProvider.Quotes.CONTENT_URI);
     try {

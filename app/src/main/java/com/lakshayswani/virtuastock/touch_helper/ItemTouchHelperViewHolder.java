@@ -6,7 +6,13 @@ package com.lakshayswani.virtuastock.touch_helper;
  * Interface for enabling swiping to delete
  */
 public interface ItemTouchHelperViewHolder {
-  void onItemSelected();
+    /**
+     * On item selected.
+     */
+    void onItemSelected();
 
-  void onItemClear();
+    /**
+     * On item clear.
+     */
+    void onItemClear();
 }

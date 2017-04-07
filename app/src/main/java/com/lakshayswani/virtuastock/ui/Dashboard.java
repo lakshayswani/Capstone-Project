@@ -40,14 +40,29 @@ import com.lakshayswani.virtuastock.model.User;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Dashboard.
+ */
 public class Dashboard extends AppCompatActivity implements PortfolioFragment.OnListFragmentInteractionListener, StocksFragment.OnListFragmentInteractionListener, AccountFragment.OnFragmentInteractionListener, TradeFragment.OnFragmentInteractionListener, GoogleApiClient.OnConnectionFailedListener {
 
+    /**
+     * The constant database.
+     */
     public static DatabaseReference database;
 
+    /**
+     * The constant storageReference.
+     */
     public static StorageReference storageReference;
 
+    /**
+     * The constant currentUser.
+     */
     public static FirebaseUser currentUser;
 
+    /**
+     * The constant user.
+     */
     public static User user;
 
     @Override
@@ -62,6 +77,9 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
 
     private FragmentManager fragmentManager;
 
+    /**
+     * The constant robotoLight.
+     */
     public static Typeface robotoLight;
 
     private FragmentTransaction fragmentTransaction;
@@ -205,6 +223,9 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
         manager.putFragment(outState, "currentFragment", manager.findFragmentById(R.id.dashboardContent));
     }
 
+    /**
+     * Update user.
+     */
     public static void updateUser() {
         database.child(currentUser.getUid()).setValue(user);
     }
@@ -214,6 +235,11 @@ public class Dashboard extends AppCompatActivity implements PortfolioFragment.On
         Log.d("GOOGLE", "onConnectionFailed:" + connectionResult);
     }
 
+    /**
+     * Update profile pic.
+     *
+     * @param uri the uri
+     */
     public static void updateProfilePic(Uri uri)
     {
         storageReference.child(user.getUid()).putFile(uri);

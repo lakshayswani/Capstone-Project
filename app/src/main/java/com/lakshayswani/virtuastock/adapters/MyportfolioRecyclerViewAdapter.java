@@ -27,6 +27,12 @@ public class MyportfolioRecyclerViewAdapter extends RecyclerView.Adapter<Myportf
     private final List<Stocks> mValues;
     private final OnListFragmentInteractionListener mListener;
 
+    /**
+     * Instantiates a new Myportfolio recycler view adapter.
+     *
+     * @param items    the items
+     * @param listener the listener
+     */
     public MyportfolioRecyclerViewAdapter(List<Stocks> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
@@ -98,19 +104,57 @@ public class MyportfolioRecyclerViewAdapter extends RecyclerView.Adapter<Myportf
         return mValues.size();
     }
 
+    /**
+     * The type View holder.
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
+        /**
+         * The M foldable layout.
+         */
         protected FoldableLayout mFoldableLayout;
 
+        /**
+         * The C stock name.
+         */
         public final TextView cStockName;
+        /**
+         * The C stock price.
+         */
         public final TextView cStockPrice;
+        /**
+         * The D stock name.
+         */
         public final TextView dStockName;
+        /**
+         * The D stock quantity.
+         */
         public final TextView dStockQuantity;
+        /**
+         * The D trade price.
+         */
         public final TextView dTradePrice;
+        /**
+         * The D trade profit.
+         */
         public final TextView dTradeProfit;
+        /**
+         * The D date.
+         */
         public final TextView dDate;
+        /**
+         * The D trade type.
+         */
         public final TextView dTradeType;
+        /**
+         * The M item.
+         */
         public Stocks mItem;
 
+        /**
+         * Instantiates a new View holder.
+         *
+         * @param foldableLayout the foldable layout
+         */
         public ViewHolder(FoldableLayout foldableLayout) {
             super(foldableLayout);
             foldableLayout.setupViews(R.layout.fragment_portfolio, R.layout.fragment_portfolio_detail, R.dimen.foldable_portfolio_card_height, itemView.getContext());

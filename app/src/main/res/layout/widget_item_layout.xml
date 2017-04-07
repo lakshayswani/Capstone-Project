@@ -17,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left|center_vertical"
+        android:contentDescription="@string/cd_stock_name"
         />
     <LinearLayout
         android:layout_width="0dp"
@@ -29,7 +30,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="10sp"
-            tools:text="1000.00"
+            android:contentDescription="@string/cd_stock_price"
+            tools:text="@string/zero"
             />
         <TextView
             android:id="@+id/change"
@@ -38,7 +40,8 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            tools:text="100%"
+            tools:text="@string/zero"
+            android:contentDescription="@string/cd_stock_details"
             />
     </LinearLayout>
 </LinearLayout>

@@ -14,7 +14,6 @@ import com.lakshayswani.virtuastock.data.QuoteProvider;
 /**
  * Created by lenovo on 20-12-2016.
  */
-
 public class WidgetRemoteViewsFactory extends RemoteViewsService {
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {

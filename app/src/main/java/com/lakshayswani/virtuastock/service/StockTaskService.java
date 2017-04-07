@@ -35,12 +35,28 @@ public class StockTaskService extends GcmTaskService{
   private StringBuilder mStoredSymbols = new StringBuilder();
   private boolean isUpdate;
 
-  public StockTaskService(){}
+    /**
+     * Instantiates a new Stock task service.
+     */
+    public StockTaskService(){}
 
-  public StockTaskService(Context context){
+    /**
+     * Instantiates a new Stock task service.
+     *
+     * @param context the context
+     */
+    public StockTaskService(Context context){
     mContext = context;
   }
-  String fetchData(String url) throws IOException{
+
+    /**
+     * Fetch data string.
+     *
+     * @param url the url
+     * @return the string
+     * @throws IOException the io exception
+     */
+    String fetchData(String url) throws IOException{
     Request request = new Request.Builder()
         .url(url)
         .build();

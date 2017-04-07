@@ -20,6 +20,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.lakshayswani.virtuastock.R;
 
+/**
+ * The type Sign up.
+ */
 public class SignUp extends AppCompatActivity {
 
     private EditText signup_email;
@@ -75,7 +78,7 @@ public class SignUp extends AppCompatActivity {
                     UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                             .setDisplayName(signup_name.getText().toString()).build();
                     user.updateProfile(profileUpdates);
-                    Toast.makeText(getApplicationContext(), "Welcome " + user.getDisplayName(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.t_welcome) + user.getDisplayName(), Toast.LENGTH_LONG).show();
                     Intent in = new Intent(getApplicationContext(), Dashboard.class);
                     startActivity(in);
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
@@ -94,6 +97,11 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
+    /**
+     * Validate boolean.
+     *
+     * @return the boolean
+     */
     public boolean validate() {
         boolean valid = true;
 
@@ -102,21 +110,21 @@ public class SignUp extends AppCompatActivity {
         String password = signup_name.getText().toString();
 
         if (name.isEmpty() || name.length() < 3) {
-            signup_name.setError("at least 3 characters");
+            signup_name.setError(getResources().getString(R.string.t_valid_name));
             valid = false;
         } else {
             signup_name.setError(null);
         }
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            signup_email.setError("enter a valid email address");
+            signup_email.setError(getResources().getString(R.string.t_valid_email));
             valid = false;
         } else {
             signup_email.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            signup_password.setError("between 4 and 10 alphanumeric characters");
+            signup_password.setError(getResources().getString(R.string.t_valid_password));
             valid = false;
         } else {
             signup_password.setError(null);
@@ -130,7 +138,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Unable to make user with these details.",
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.t_signup_error),
                             Toast.LENGTH_SHORT).show();
                 }
                 progressDialog.hide();

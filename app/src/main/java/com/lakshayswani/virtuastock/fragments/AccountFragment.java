@@ -67,12 +67,31 @@ public class AccountFragment extends Fragment implements
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
+
+    /**
+     * The constant CAMERA_REQUEST.
+     */
     protected static final int CAMERA_REQUEST = 0;
+    /**
+     * The constant GALLERY_REQUEST.
+     */
     protected static final int GALLERY_REQUEST = 1;
+    /**
+     * The Bitmap.
+     */
     Bitmap bitmap;
+    /**
+     * The Uri.
+     */
     Uri uri;
+    /**
+     * The Pic intent.
+     */
     Intent picIntent = null;
 
+    /**
+     * The Fragment.
+     */
     static AccountFragment fragment;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -99,6 +118,9 @@ public class AccountFragment extends Fragment implements
 
     private GoogleApiClient mGoogleApiClient;
 
+    /**
+     * Instantiates a new Account fragment.
+     */
     public AccountFragment() {
         // Required empty public constructor
     }
@@ -111,7 +133,7 @@ public class AccountFragment extends Fragment implements
      * @param param2 Parameter 2.
      * @return A new instance of fragment AccountFragment.
      */
-    // TODO: Rename and change types and number of parameters
+// TODO: Rename and change types and number of parameters
     public static AccountFragment newInstance(String param1, String param2) {
         if (fragment == null) {
             fragment = new AccountFragment();
@@ -167,24 +189,33 @@ public class AccountFragment extends Fragment implements
         if (Dashboard.currentUser.getDisplayName() != null)
             username.setText(Dashboard.currentUser.getDisplayName());
 
-        if(savedInstanceState==null)
+        if (savedInstanceState == null)
             Dashboard.storageReference.child(Dashboard.currentUser.getUid()).getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task) {
-                    if(task.isSuccessful())
-                        Picasso.with(getActivity().getApplicationContext()).load(task.getResult()).into(header_cover_image);
+                    if (task.isSuccessful())
+                        try {
+                            Picasso.with(getActivity().getApplicationContext()).load(task.getResult()).into(header_cover_image);
+                        } catch (Exception e) {
+                            Log.e("ACCOUNT_FRAGMENT", e.getMessage());
+                        }
                 }
             });
-        else if(savedInstanceState.getParcelable("ProfilePic")==null)
-        Dashboard.storageReference.child(Dashboard.currentUser.getUid()).getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-            @Override
-            public void onComplete(@NonNull Task<Uri> task) {
-                if(task.isSuccessful())
-                Picasso.with(getActivity().getApplicationContext()).load(task.getResult()).into(header_cover_image);
-            }
-        });
+        else if (savedInstanceState.getParcelable(getResources().getString(R.string.profilePic)) == null)
+            Dashboard.storageReference.child(Dashboard.currentUser.getUid()).getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        try {
+                            Picasso.with(getActivity().getApplicationContext()).load(task.getResult()).into(header_cover_image);
+                        } catch (Exception e) {
+                            Log.e("ACCOUNT_FRAGMENT", e.getMessage());
+                        }
+                    }
+                }
+            });
         else
-            header_cover_image.setImageBitmap((Bitmap)savedInstanceState.getParcelable("ProfilePic"));
+            header_cover_image.setImageBitmap((Bitmap) savedInstanceState.getParcelable(getResources().getString(R.string.profilePic)));
 
         user_profile_photo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,8 +228,8 @@ public class AccountFragment extends Fragment implements
             @Override
             public void onClick(View v) {
                 final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-                alertDialogBuilder.setMessage("Are you sure you want to log out?");
-                alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setMessage(getResources().getString(R.string.t_logout_msg));
+                alertDialogBuilder.setPositiveButton(getResources().getString(R.string.t_yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         FirebaseAuth.getInstance().signOut();
@@ -219,12 +250,12 @@ public class AccountFragment extends Fragment implements
                         }
                     }
                 });
-                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setNegativeButton(getResources().getString(R.string.t_no), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 });
-                alertDialogBuilder.setTitle("LOGOUT");
+                alertDialogBuilder.setTitle(getResources().getString(R.string.t_logout));
                 alertDialogBuilder.show();
             }
         });
@@ -233,12 +264,9 @@ public class AccountFragment extends Fragment implements
             @Override
             public void onClick(View v) {
                 String newUsername = null;
-                if(username.getText().toString().equalsIgnoreCase(""))
-                {
+                if (username.getText().toString().equalsIgnoreCase("")) {
                     newUsername = "Not Set";
-                }
-                else
-                {
+                } else {
                     newUsername = username.getText().toString();
                 }
                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
@@ -246,16 +274,16 @@ public class AccountFragment extends Fragment implements
                         .build();
                 Dashboard.currentUser.updateProfile(profileUpdates);
                 if ((newPassword.getText().toString().equalsIgnoreCase("")) || (newPasswordConfirm.getText().toString().equalsIgnoreCase(""))) {
-                    Toast.makeText(getActivity(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getResources().getString(R.string.t_profile_updated), Toast.LENGTH_SHORT).show();
                 } else if (newPassword.getText().toString().equalsIgnoreCase(newPasswordConfirm.getText().toString())) {
                     Dashboard.currentUser.updatePassword(newPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(getActivity(), "Profile updated successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getResources().getString(R.string.t_profile_updated), Toast.LENGTH_SHORT).show();
                         }
                     });
                 } else {
-                    Toast.makeText(getActivity(), "The passwords do not match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getResources().getString(R.string.t_passwords_not_match), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -263,7 +291,12 @@ public class AccountFragment extends Fragment implements
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+    /**
+     * On button pressed.
+     *
+     * @param uri the uri
+     */
+// TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -298,7 +331,12 @@ public class AccountFragment extends Fragment implements
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
+        /**
+         * On fragment interaction.
+         *
+         * @param uri the uri
+         */
+// TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 
@@ -306,9 +344,8 @@ public class AccountFragment extends Fragment implements
     public void onSaveInstanceState(Bundle outState) {
 
         try {
-            outState.putParcelable("ProfilePic", ((BitmapDrawable) header_cover_image.getDrawable()).getBitmap());
-        }catch (Exception e)
-        {
+            outState.putParcelable(getResources().getString(R.string.profilePic), ((BitmapDrawable) header_cover_image.getDrawable()).getBitmap());
+        } catch (Exception e) {
             Log.e("Saving State", e.getMessage());
         }
         super.onSaveInstanceState(outState);
@@ -321,22 +358,22 @@ public class AccountFragment extends Fragment implements
 
     private void startDilog() {
         AlertDialog.Builder myAlertDilog = new AlertDialog.Builder(getActivity());
-        myAlertDilog.setTitle("Upload picture option..");
-        myAlertDilog.setMessage("Where to upload picture????");
-        myAlertDilog.setPositiveButton("Gallery", new DialogInterface.OnClickListener() {
+        myAlertDilog.setTitle(getResources().getString(R.string.upload_pic));
+        myAlertDilog.setMessage(getResources().getString(R.string.upload_option));
+        myAlertDilog.setPositiveButton(getResources().getString(R.string.gallary), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                picIntent = new Intent(Intent.ACTION_GET_CONTENT,null);
+                picIntent = new Intent(Intent.ACTION_GET_CONTENT, null);
                 picIntent.setType("image/*");
-                picIntent.putExtra("return_data",true);
-                startActivityForResult(picIntent,GALLERY_REQUEST);
+                picIntent.putExtra(getResources().getString(R.string.return_data), true);
+                startActivityForResult(picIntent, GALLERY_REQUEST);
             }
         });
-        myAlertDilog.setNegativeButton("Camera", new DialogInterface.OnClickListener() {
+        myAlertDilog.setNegativeButton(getResources().getString(R.string.Camera), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 picIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(picIntent,CAMERA_REQUEST);
+                startActivityForResult(picIntent, CAMERA_REQUEST);
             }
         });
         myAlertDilog.show();
@@ -345,9 +382,9 @@ public class AccountFragment extends Fragment implements
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==GALLERY_REQUEST){
-            if (resultCode==RESULT_OK){
-                if (data!=null) {
+        if (requestCode == GALLERY_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                if (data != null) {
                     uri = data.getData();
                     BitmapFactory.Options options = new BitmapFactory.Options();
                     options.inJustDecodeBounds = true;
@@ -361,26 +398,26 @@ public class AccountFragment extends Fragment implements
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
-                }else {
-                    Toast.makeText(getActivity().getApplicationContext(), "Cancelled",
+                } else {
+                    Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.t_cancel),
                             Toast.LENGTH_SHORT).show();
                 }
-            }else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(getActivity().getApplicationContext(), "Cancelled",
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.t_cancel),
                         Toast.LENGTH_SHORT).show();
             }
-        }else if (requestCode == CAMERA_REQUEST) {
+        } else if (requestCode == CAMERA_REQUEST) {
             if (resultCode == RESULT_OK) {
-                if (data.hasExtra("data")) {
-                    bitmap = (Bitmap) data.getExtras().get("data");
-                    uri = getImageUri(getActivity(),bitmap);
+                if (data.hasExtra(getResources().getString(R.string.data))) {
+                    bitmap = (Bitmap) data.getExtras().get(getResources().getString(R.string.data));
+                    uri = getImageUri(getActivity(), bitmap);
                     File finalFile = new File(getRealPathFromUri(uri));
                     header_cover_image.setImageBitmap(bitmap);
                     Dashboard.updateProfilePic(uri);
                 } else if (data.getExtras() == null) {
 
                     Toast.makeText(getActivity().getApplicationContext(),
-                            "No extras to retrieve!", Toast.LENGTH_SHORT)
+                            getResources().getString(R.string.t_nothing_to_retrieve), Toast.LENGTH_SHORT)
                             .show();
 
                     BitmapDrawable thumbnail = new BitmapDrawable(
@@ -391,7 +428,7 @@ public class AccountFragment extends Fragment implements
                 }
 
             } else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(getActivity().getApplicationContext(), "Cancelled",
+                Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.t_cancel),
                         Toast.LENGTH_SHORT).show();
             }
         }
@@ -400,8 +437,8 @@ public class AccountFragment extends Fragment implements
     private String getRealPathFromUri(Uri tempUri) {
         Cursor cursor = null;
         try {
-            String[] proj = { MediaStore.Images.Media.DATA };
-            cursor = getActivity().getContentResolver().query(tempUri,  proj, null, null, null);
+            String[] proj = {MediaStore.Images.Media.DATA};
+            cursor = getActivity().getContentResolver().query(tempUri, proj, null, null, null);
             int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
             cursor.moveToFirst();
             return cursor.getString(column_index);
@@ -411,6 +448,15 @@ public class AccountFragment extends Fragment implements
             }
         }
     }
+
+    /**
+     * Calculate in sample size int.
+     *
+     * @param options   the options
+     * @param reqWidth  the req width
+     * @param reqHeight the req height
+     * @return the int
+     */
     public static int calculateInSampleSize(
             BitmapFactory.Options options, int reqWidth, int reqHeight) {
         // Raw height and width of image
@@ -436,7 +482,7 @@ public class AccountFragment extends Fragment implements
     private Uri getImageUri(Activity activity, Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        String path = MediaStore.Images.Media.insertImage(activity.getContentResolver(), bitmap, "Title", null);
+        String path = MediaStore.Images.Media.insertImage(activity.getContentResolver(), bitmap, getResources().getString(R.string.title), null);
         return Uri.parse(path);
     }
 }

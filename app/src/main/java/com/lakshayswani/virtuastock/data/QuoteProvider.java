@@ -11,12 +11,24 @@ import net.simonvt.schematic.annotation.TableEndpoint;
  */
 @ContentProvider(authority = QuoteProvider.AUTHORITY, database = QuoteDatabase.class)
 public class QuoteProvider {
-  public static final String AUTHORITY = "com.lakshayswani.virtuastock.data.QuoteProvider";
+    /**
+     * The constant AUTHORITY.
+     */
+    public static final String AUTHORITY = "com.lakshayswani.virtuastock.data.QuoteProvider";
 
-  static final Uri BASE_CONTENT_URI = Uri.parse("content://" + AUTHORITY);
+    /**
+     * The Base content uri.
+     */
+    static final Uri BASE_CONTENT_URI = Uri.parse("content://" + AUTHORITY);
 
-  interface Path{
-    String QUOTES = "quotes";
+    /**
+     * The interface Path.
+     */
+    interface Path{
+        /**
+         * The constant QUOTES.
+         */
+        String QUOTES = "quotes";
   }
 
   private static Uri buildUri(String... paths){
@@ -27,15 +39,27 @@ public class QuoteProvider {
     return builder.build();
   }
 
-  @TableEndpoint(table = QuoteDatabase.QUOTES)
+    /**
+     * The type Quotes.
+     */
+    @TableEndpoint(table = QuoteDatabase.QUOTES)
   public static class Quotes{
-    @ContentUri(
+        /**
+         * The constant CONTENT_URI.
+         */
+        @ContentUri(
         path = Path.QUOTES,
         type = "vnd.android.cursor.dir/quote"
     )
     public static final Uri CONTENT_URI = buildUri(Path.QUOTES);
 
-    @InexactContentUri(
+        /**
+         * With symbol uri.
+         *
+         * @param symbol the symbol
+         * @return the uri
+         */
+        @InexactContentUri(
         name = "QUOTE_ID",
         path = Path.QUOTES + "/*",
         type = "vnd.android.cursor.item/quote",
